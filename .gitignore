@@ -5,4 +5,5 @@ ProjectSettings/
 Temp/
 .vs/
 DemoScene/
+obj/
 CubeMaster.sln
