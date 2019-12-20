@@ -1,4 +1,4 @@
-# cube
+# Cube Master
 thing with 6 sides to walk on
 
 Lokaler MP FPS Gravity Puzzle Shooter
