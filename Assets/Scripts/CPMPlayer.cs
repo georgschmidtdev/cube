@@ -42,8 +42,8 @@ public class CPMPlayer : MonoBehaviour
 {
     public Transform playerView;     // Camera
     public float playerViewYOffset = 0.6f; // The height at which the camera is bound to
-    public float xMouseSensitivity = 30.0f;
-    public float yMouseSensitivity = 30.0f;
+    public float xMouseSensitivity = 60.0f;
+    public float yMouseSensitivity = 60.0f;
 //
     /*Frame occuring factors*/
     public float gravity = 20.0f;
@@ -54,12 +54,14 @@ public class CPMPlayer : MonoBehaviour
     public float moveSpeed = 7.0f;                // Ground move speed
     public float runAcceleration = 14.0f;         // Ground accel
     public float runDeacceleration = 10.0f;       // Deacceleration that occurs when running on the ground
-    public float airAcceleration = 2.0f;          // Air accel
-    public float airDecceleration = 2.0f;         // Deacceleration experienced when ooposite strafing
-    public float airControl = 0.3f;               // How precise air control is
-    public float sideStrafeAcceleration = 50.0f;  // How fast acceleration occurs to get up to sideStrafeSpeed when
+    public float airAcceleration = 4.0f;          // Air accel
+    public float airDecceleration = 4.0f;         // Deacceleration experienced when ooposite strafing
+    public float airControl = 1f;               // How precise air control is
+    public float sideStrafeAcceleration = 60.0f;  // How fast acceleration occurs to get up to sideStrafeSpeed when
     public float sideStrafeSpeed = 1.0f;          // What the max speed to generate when side strafing
     public float jumpSpeed = 8.0f;                // The speed at which the character's up axis gains when hitting jump
+    public float sneakSpeed = 0.6f;               // The speed at which the character can sneak
+    public float crouchSpeed = 0.4f;              // The speed at which the character can crouch  
     public bool holdJumpToBhop = false;           // When enabled allows player to just hold jump button to keep on bhopping perfectly. Beware: smells like casual.
 
     /*print() style */
@@ -71,6 +73,7 @@ public class CPMPlayer : MonoBehaviour
     private int frameCount = 0;
     private float dt = 0.0f;
     private float fps = 0.0f;
+    private float speedControl = 1.0f;
 
     private CharacterController _controller;
 
@@ -90,6 +93,11 @@ public class CPMPlayer : MonoBehaviour
 
     // Player commands, stores wish commands that the player asks for (Forward, back, jump, etc)
     private Cmd _cmd;
+
+    //Movement Activations
+
+    private bool Sneaking = false;
+    private bool Crouching = false;
 
     //JumpPad
     public float force1 = 1.2f;
@@ -190,6 +198,25 @@ public class CPMPlayer : MonoBehaviour
             transform.position.x,
             transform.position.y + playerViewYOffset,
             transform.position.z);
+
+        //Sneaking & Crouching
+        if (Input.GetKey("left shift"))
+        {
+            speedControl = sneakSpeed;
+            Sneaking = true;
+        }
+
+        else if (Input.GetKey("left ctrl"))
+        {
+            speedControl = crouchSpeed;
+            Crouching = true;
+        }
+
+        else
+        {
+            speedControl = 1.0f;
+            Crouching = false;
+        }
     }
 
      /*******************************************************************************************************\
@@ -306,6 +333,10 @@ public class CPMPlayer : MonoBehaviour
         playerVelocity.z *= speed;
     }
 
+
+
+
+
     /**
      * Called every frame when the engine detects that the player is on the ground
      */
@@ -327,7 +358,10 @@ public class CPMPlayer : MonoBehaviour
         moveDirectionNorm = wishdir;
 
         var wishspeed = wishdir.magnitude;
-        wishspeed *= moveSpeed;
+
+        //Move, Sneak & Crouch speed
+
+        wishspeed *= moveSpeed * speedControl;
 
         Accelerate(wishdir, wishspeed, runAcceleration);
 
@@ -342,9 +376,21 @@ public class CPMPlayer : MonoBehaviour
     }
 
 
-    // JumpPad Acceleration
+    // Pad Acceleration
     void OnTriggerEnter(Collider other)
     {
+
+        // MOVEMENT VECTOR
+
+        Vector3 wishdir;
+
+        wishdir = new Vector3(_cmd.rightMove, 0, _cmd.forwardMove);
+        wishdir = transform.TransformDirection(wishdir);
+        wishdir.Normalize();
+        moveDirectionNorm = wishdir;
+
+        //Jumppads
+
         if (other.gameObject.CompareTag("JumpPad1"))
         {
             playerVelocity.y = jumpSpeed * force1;
@@ -360,7 +406,7 @@ public class CPMPlayer : MonoBehaviour
             playerVelocity.y = jumpSpeed * force3;
         }
 
-        if (other.gameObject.CompareTag("JumpPad4"))
+        /*if (other.gameObject.CompareTag("JumpPad4"))
         {
             playerVelocity.y = jumpSpeed * force4;
         }
@@ -368,25 +414,32 @@ public class CPMPlayer : MonoBehaviour
         if (other.gameObject.CompareTag("JumpPad5"))
         {
             playerVelocity.y = jumpSpeed * force5;
-        }
+        }*/
+
+        //Boostpads
+
         if (other.gameObject.CompareTag("BoostPad1"))
         {
             playerVelocity.y = jumpSpeed * boost1;
-            playerVelocity.z = jumpSpeed * boost1 / 2;
+            playerVelocity.z = (playerVelocity.z + wishdir.z) * boost2 / 1.5f;
+            playerVelocity.x = (playerVelocity.x + wishdir.x) * boost2 / 1.5f;
         }
 
         if (other.gameObject.CompareTag("BoostPad2"))
         {
             playerVelocity.y = jumpSpeed * boost2;
-            playerVelocity.z = jumpSpeed * boost2 / 1.5f;
+            playerVelocity.z = (playerVelocity.z + wishdir.z) * boost2 / 1.5f;
+            playerVelocity.x = (playerVelocity.x + wishdir.x) * boost2 / 1.5f;
         }
 
         if (other.gameObject.CompareTag("BoostPad3"))
         {
-            playerVelocity.y = jumpSpeed * boost3;
+            playerVelocity.y = jumpSpeed * boost3 / 1.5f;
+            playerVelocity.z = (playerVelocity.z + wishdir.z) * boost2 / 1.5f;
+            playerVelocity.x = (playerVelocity.x + wishdir.x) * boost2 / 1.5f;
         }
 
-        if (other.gameObject.CompareTag("BoostPad4"))
+        /*if (other.gameObject.CompareTag("BoostPad4"))
         {
             playerVelocity.y = jumpSpeed * boost4;
         }
@@ -394,18 +447,8 @@ public class CPMPlayer : MonoBehaviour
         if (other.gameObject.CompareTag("BoostPad5"))
         {
             playerVelocity.y = jumpSpeed * boost5;
-        }
+        } */
     }
-
-        
-  
-        
-  
-    
-
-
-
-
 
 
 /**
