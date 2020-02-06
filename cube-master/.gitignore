@@ -1,0 +1,11 @@
+Library/
+Logs/
+Packages/
+ProjectSettings/
+Temp/
+.vs/
+DemoScene/
+obj/
+CubeMaster.sln
+cube.sln
+Assembly-CSharp.csproj
