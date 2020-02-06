@@ -9,9 +9,10 @@ public class TimerStopTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        timerTrigger.stopTimer();
-
+       
+            timerTrigger.stopTimer();
     }
+    
 }
 
 
