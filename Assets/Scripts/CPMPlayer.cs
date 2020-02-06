@@ -91,6 +91,20 @@ public class CPMPlayer : MonoBehaviour
     // Player commands, stores wish commands that the player asks for (Forward, back, jump, etc)
     private Cmd _cmd;
 
+    //JumpPad
+    public float force1 = 1.2f;
+    public float force2 = 1.5f;
+    public float force3 = 2f;
+    public float force4 = 1.2f;
+    public float force5 = 1.2f;
+
+    private Rigidbody playerRB;
+
+  
+
+
+    
+
     private void Start()
     {
         // Hide the cursor
@@ -111,6 +125,9 @@ public class CPMPlayer : MonoBehaviour
             transform.position.z);
 
         _controller = GetComponent<CharacterController>();
+
+        //JumpPad imit
+        playerRB = GetComponent<Rigidbody>();
     }
 
     private void Update()
@@ -318,10 +335,51 @@ public class CPMPlayer : MonoBehaviour
         }
     }
 
-    /**
-     * Applies friction to the player, called in both the air and on the ground
-     */
-    private void ApplyFriction(float t)
+
+    // JumpPad Acceleration
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("JumpPad1"))
+        {
+            playerVelocity.y = jumpSpeed * force1;
+        }
+
+        if (other.gameObject.CompareTag("JumpPad2"))
+        {
+            playerVelocity.y = jumpSpeed * force2;
+        }
+
+        if (other.gameObject.CompareTag("JumpPad3"))
+        {
+            playerVelocity.y = jumpSpeed * force3;
+        }
+
+        if (other.gameObject.CompareTag("JumpPad4"))
+        {
+            playerVelocity.y = jumpSpeed * force4;
+        }
+
+        if (other.gameObject.CompareTag("JumpPad5"))
+        {
+            playerVelocity.y = jumpSpeed * force5;
+        }
+    }
+
+        
+  
+        
+  
+    
+
+
+
+
+
+
+/**
+ * Applies friction to the player, called in both the air and on the ground
+ */
+private void ApplyFriction(float t)
     {
         Vector3 vec = playerVelocity; // Equivalent to: VectorCopy();
         float speed;
@@ -369,6 +427,8 @@ public class CPMPlayer : MonoBehaviour
         playerVelocity.z += accelspeed * wishdir.z;
     }
 
+   
+    
     private void OnGUI()
     {
         GUI.Label(new Rect(0, 0, 400, 100), "FPS: " + fps, style);
