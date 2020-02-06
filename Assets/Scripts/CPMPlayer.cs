@@ -209,7 +209,7 @@ public class CPMPlayer : MonoBehaviour
             wishJump = Input.GetButton("Jump");
             return;
         }
-                           
+
         if(Input.GetButtonDown("Jump") && !wishJump)
             wishJump = true;
         if(Input.GetButtonUp("Jump"))

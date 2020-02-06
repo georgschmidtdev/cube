@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,45 +12,33 @@ public class MenuController : MonoBehaviour
     public GameObject objectToMove;
     public float animationDuration;
 
-    public void onClicked(Button button)
-    {
-        print(button.name);
+    public void onClicked(Button button){
 
-        if(button.tag == "rotateRight")
-        {
+        if(button.tag == "rotateRight"){
 
             StartCoroutine(RotateMenuCube(objectToMove, new Vector3(0, -90, 0), animationDuration));
             StartCoroutine(MoveMenuCube(objectToMove, new Vector3(0, 0, 5), animationDuration / 2));
-
         }
-        else if(button.tag == "rotateLeft")
-        {
+        else if(button.tag == "rotateLeft"){
 
             StartCoroutine(RotateMenuCube(objectToMove, new Vector3(0, 90, 0), animationDuration));
             StartCoroutine(MoveMenuCube(objectToMove, new Vector3(0, 0, 5), animationDuration / 2));
-
         }
-        else if (button.tag == "rotateUp")
-        {
+        else if (button.tag == "rotateUp"){
 
             StartCoroutine(RotateMenuCube(objectToMove, new Vector3(90, 0, 0), animationDuration));
             StartCoroutine(MoveMenuCube(objectToMove, new Vector3(0, 0, 5), animationDuration / 2));
-
         }
-        else if (button.tag == "rotateDown")
-        {
+        else if (button.tag == "rotateDown"){
 
             StartCoroutine(RotateMenuCube(objectToMove, new Vector3(-90, 0, 0), animationDuration));
             StartCoroutine(MoveMenuCube(objectToMove, new Vector3(0, 0, 5), animationDuration / 2));
-
         }
     }
 
-    IEnumerator RotateMenuCube(GameObject gameObjectToMove, Vector3 eulerAngle, float duration)
-    {
+    IEnumerator RotateMenuCube(GameObject gameObjectToMove, Vector3 eulerAngle, float duration){
 
-        if (rotationStatus)
-        {
+        if (rotationStatus){
             yield break;
         }
 
@@ -60,8 +49,8 @@ public class MenuController : MonoBehaviour
         Vector3 currentRotation = gameObjectToMove.transform.eulerAngles;
 
         float counter = 0;
-        while (counter < duration)
-        {
+        while (counter < duration){
+
             counter += Time.deltaTime;
             gameObjectToMove.transform.eulerAngles = Vector3.Lerp(currentRotation, newRotation, counter / duration);
             yield return null;
@@ -69,15 +58,14 @@ public class MenuController : MonoBehaviour
         rotationStatus = false;
     }
 
-    IEnumerator MoveMenuCube(GameObject gameObjectToMove, Vector3 moveVector, float duration)
-    {
+    IEnumerator MoveMenuCube(GameObject gameObjectToMove, Vector3 moveVector, float duration){
 
         Vector3 newPosition = gameObjectToMove.transform.position + moveVector;
         Vector3 currentPosition = gameObjectToMove.transform.position;
 
         float counter = 0;
-        while (counter < duration)
-        {
+        while (counter < duration){
+
             counter += Time.deltaTime;
             gameObjectToMove.transform.position = Vector3.Lerp(currentPosition, newPosition, counter / duration);
             StartCoroutine(MoveMenuCubeBack(gameObjectToMove, moveVector * -1, duration));
@@ -85,19 +73,17 @@ public class MenuController : MonoBehaviour
         }
     }
 
-    IEnumerator MoveMenuCubeBack(GameObject gameObjectToMove, Vector3 moveVector, float duration)
-    {
+    IEnumerator MoveMenuCubeBack(GameObject gameObjectToMove, Vector3 moveVector, float duration){
 
         Vector3 newPosition = gameObjectToMove.transform.position + moveVector;
         Vector3 currentPosition = gameObjectToMove.transform.position;
 
         float counter = 0;
-        while (counter < duration)
-        {
+        while (counter < duration){
+
             counter += Time.deltaTime;
             gameObjectToMove.transform.position = Vector3.Lerp(currentPosition, newPosition, counter / duration);
             yield return null;
         }
     }
-
 }
