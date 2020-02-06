@@ -98,6 +98,12 @@ public class CPMPlayer : MonoBehaviour
     public float force4 = 1.2f;
     public float force5 = 1.2f;
 
+    public float boost1 = 1.2f;
+    public float boost2 = 1.5f;
+    public float boost3 = 2f;
+    public float boost4 = 1.2f;
+    public float boost5 = 1.2f;
+
     private Rigidbody playerRB;
 
   
@@ -362,6 +368,32 @@ public class CPMPlayer : MonoBehaviour
         if (other.gameObject.CompareTag("JumpPad5"))
         {
             playerVelocity.y = jumpSpeed * force5;
+        }
+        if (other.gameObject.CompareTag("BoostPad1"))
+        {
+            playerVelocity.y = jumpSpeed * boost1;
+            playerVelocity.z = jumpSpeed * boost1 / 2;
+        }
+
+        if (other.gameObject.CompareTag("BoostPad2"))
+        {
+            playerVelocity.y = jumpSpeed * boost2;
+            playerVelocity.z = jumpSpeed * boost2 / 1.5f;
+        }
+
+        if (other.gameObject.CompareTag("BoostPad3"))
+        {
+            playerVelocity.y = jumpSpeed * boost3;
+        }
+
+        if (other.gameObject.CompareTag("BoostPad4"))
+        {
+            playerVelocity.y = jumpSpeed * boost4;
+        }
+
+        if (other.gameObject.CompareTag("BoostPad5"))
+        {
+            playerVelocity.y = jumpSpeed * boost5;
         }
     }
 
