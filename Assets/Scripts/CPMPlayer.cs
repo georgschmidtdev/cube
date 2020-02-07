@@ -114,10 +114,22 @@ public class CPMPlayer : MonoBehaviour
     //public float boost5 = 1.2f;
 
 
+    //Player Components
 
     private Rigidbody playerRB;
-
     CharacterController capCol;
+
+    //Custom Checkpoints
+    private bool checkpointPossible = false;
+    private bool checkpointAvailable = false;
+    private Vector3 lastCheckpoint = Vector3.zero;
+    private Quaternion lastRotation = Quaternion.Euler(0f, 0f, 0f);
+
+    //Game Modes
+    public int gameMode = 1;
+
+    //Collectibles
+    private int lifes = 0;
 
 
     private void Start()
@@ -199,6 +211,7 @@ public class CPMPlayer : MonoBehaviour
 
         //Need to move the camera after the player has been moved because otherwise the camera will clip the player if going fast enough and will always be 1 frame behind.
         // Set the camera's position to the transform
+
         playerView.position = new Vector3(
             transform.position.x,
             transform.position.y + playerViewYOffset,
@@ -209,6 +222,7 @@ public class CPMPlayer : MonoBehaviour
         Vector3 center = capCol.center;
 
         //Sneaking
+
         if (Input.GetKey("left shift"))
         {
             speedControl = sneakSpeed;
@@ -244,6 +258,39 @@ public class CPMPlayer : MonoBehaviour
 
             capCol.center = center;
             Crouching = false;
+        }
+
+        // CUSTOM CHECKPOINTS 
+
+        if (capCol.isGrounded)
+        {
+            checkpointPossible = true;
+        }
+        else
+        {
+            checkpointPossible = false;
+        }
+
+        if (Input.GetKeyDown(KeyCode.E) && checkpointPossible == true && gameMode == 1 && lifes > 0)
+        {
+
+            Debug.Log("Checkpoint set");
+            lastCheckpoint = transform.position;
+            lastRotation = transform.rotation;
+            checkpointAvailable = true;
+        }
+
+        //RESPAWN 
+
+        if (Input.GetKeyDown(KeyCode.R) && checkpointAvailable == true)
+        {
+            Debug.Log("Checkpoint teleport");
+            transform.position = lastCheckpoint;
+            transform.rotation = lastRotation;
+            if (lifes > 0)
+            {
+                lifes -= 1;
+            }
         }
     }
 
@@ -476,7 +523,16 @@ public class CPMPlayer : MonoBehaviour
         {
             playerVelocity.y = jumpSpeed * boost5;
         } */
+
+        // COLLECTIBLES
+
+        if (other.gameObject.CompareTag("life"))
+        {
+            lifes += 1;
+        }
+
     }
+
 
 
 /**
