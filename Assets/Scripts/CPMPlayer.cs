@@ -421,16 +421,26 @@ public class CPMPlayer : MonoBehaviour
 
         if (other.gameObject.CompareTag("JumpPad1"))
         {
+            // Sound von Jumppad abspielen
+            AudioSource audio = other.gameObject.GetComponent<AudioSource>();
+            audio.Play();
+
             playerVelocity.y = jumpSpeed * force1;
         }
 
         if (other.gameObject.CompareTag("JumpPad2"))
         {
+            // Sound von Jumppad abspielen
+            AudioSource audio = other.gameObject.GetComponent<AudioSource>();
+            audio.Play();
             playerVelocity.y = jumpSpeed * force2;
         }
 
         if (other.gameObject.CompareTag("JumpPad3"))
         {
+            // Sound von Jumppad abspielen
+            AudioSource audio = other.gameObject.GetComponent<AudioSource>();
+            audio.Play();
             playerVelocity.y = jumpSpeed * force3;
         }
 
@@ -448,6 +458,9 @@ public class CPMPlayer : MonoBehaviour
 
         if (other.gameObject.CompareTag("BoostPad1"))
         {
+            // Sound von BoostPad abspielen
+            AudioSource audio = other.gameObject.GetComponent<AudioSource>();
+            audio.Play();
             playerVelocity.y = jumpSpeed * boost1;
             playerVelocity.z = (playerVelocity.z + wishdir.z) * boost2 / 1.5f;
             playerVelocity.x = (playerVelocity.x + wishdir.x) * boost2 / 1.5f;
@@ -455,6 +468,9 @@ public class CPMPlayer : MonoBehaviour
 
         if (other.gameObject.CompareTag("BoostPad2"))
         {
+            // Sound von BoostPad abspielen
+            AudioSource audio = other.gameObject.GetComponent<AudioSource>();
+            audio.Play();
             playerVelocity.y = jumpSpeed * boost2;
             playerVelocity.z = (playerVelocity.z + wishdir.z) * boost2 / 1.5f;
             playerVelocity.x = (playerVelocity.x + wishdir.x) * boost2 / 1.5f;
@@ -462,6 +478,9 @@ public class CPMPlayer : MonoBehaviour
 
         if (other.gameObject.CompareTag("BoostPad3"))
         {
+            // Sound von BoostPad abspielen
+            AudioSource audio = other.gameObject.GetComponent<AudioSource>();
+            audio.Play();
             playerVelocity.y = jumpSpeed * boost3 / 1.5f;
             playerVelocity.z = (playerVelocity.z + wishdir.z) * boost2 / 1.5f;
             playerVelocity.x = (playerVelocity.x + wishdir.x) * boost2 / 1.5f;
