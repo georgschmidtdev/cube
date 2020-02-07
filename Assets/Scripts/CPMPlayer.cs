@@ -104,14 +104,14 @@ public class CPMPlayer : MonoBehaviour
     public float force1 = 1.2f;
     public float force2 = 1.5f;
     public float force3 = 2f;
-    public float force4 = 1.2f;
-    public float force5 = 1.2f;
+    //public float force4 = 1.2f;
+    //public float force5 = 1.2f;
 
     public float boost1 = 1.2f;
     public float boost2 = 1.5f;
     public float boost3 = 2f;
-    public float boost4 = 1.2f;
-    public float boost5 = 1.2f;
+    //public float boost4 = 1.2f;
+    //public float boost5 = 1.2f;
 
 
 
@@ -426,7 +426,7 @@ public class CPMPlayer : MonoBehaviour
 
         if (other.gameObject.CompareTag("JumpPad2"))
         {
-            playerVelocity.y = jumpSpeed * force2;
+            playerVelocity.y = jumpSpeed * force2 * 0.9f;
         }
 
         if (other.gameObject.CompareTag("JumpPad3"))
@@ -449,22 +449,22 @@ public class CPMPlayer : MonoBehaviour
         if (other.gameObject.CompareTag("BoostPad1"))
         {
             playerVelocity.y = jumpSpeed * boost1;
-            playerVelocity.z = (playerVelocity.z + wishdir.z) * boost2 / 1.5f;
-            playerVelocity.x = (playerVelocity.x + wishdir.x) * boost2 / 1.5f;
+            playerVelocity.z = (playerVelocity.z + wishdir.z) * boost2 / 6f;
+            playerVelocity.x = (playerVelocity.x + wishdir.x) * boost2 / 6f;
         }
 
         if (other.gameObject.CompareTag("BoostPad2"))
         {
-            playerVelocity.y = jumpSpeed * boost2;
-            playerVelocity.z = (playerVelocity.z + wishdir.z) * boost2 / 1.5f;
-            playerVelocity.x = (playerVelocity.x + wishdir.x) * boost2 / 1.5f;
+            playerVelocity.y = jumpSpeed * boost2 * 0.9f;
+            playerVelocity.z = (playerVelocity.z + wishdir.z) * boost2 / 4f;
+            playerVelocity.x = (playerVelocity.x + wishdir.x) * boost2 / 4f;
         }
 
         if (other.gameObject.CompareTag("BoostPad3"))
         {
-            playerVelocity.y = jumpSpeed * boost3 / 1.5f;
-            playerVelocity.z = (playerVelocity.z + wishdir.z) * boost2 / 1.5f;
-            playerVelocity.x = (playerVelocity.x + wishdir.x) * boost2 / 1.5f;
+            playerVelocity.y = jumpSpeed * boost3 * 0.6f;
+            playerVelocity.z = (playerVelocity.z + wishdir.z) * boost2 / 2f;
+            playerVelocity.x = (playerVelocity.x + wishdir.x) * boost2 / 2f;
         }
 
         /*if (other.gameObject.CompareTag("BoostPad4"))
