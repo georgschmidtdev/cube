@@ -288,7 +288,7 @@ public class CPMPlayer : MonoBehaviour
         
         SetMovementDir();
 
-        wishdir =  new Vector3(_cmd.rightMove, 0, _cmd.forwardMove);
+        wishdir =  new Vector3(_cmd.rightMove, 0, 0 /*_cmd.forwardMove*/);
         wishdir = transform.TransformDirection(wishdir);
 
         float wishspeed = wishdir.magnitude;
