@@ -123,7 +123,8 @@ public class CPMPlayer : MonoBehaviour
     private bool checkpointPossible = false;
     private bool checkpointAvailable = false;
     private Vector3 lastCheckpoint = Vector3.zero;
-    private Quaternion lastRotation = Quaternion.Euler(0f, 0f, 0f);
+    private Quaternion lastRotation;
+    private Quaternion lastLookRotation;
 
     //Game Modes
     public int gameMode = 1;
@@ -277,6 +278,7 @@ public class CPMPlayer : MonoBehaviour
             Debug.Log("Checkpoint set");
             lastCheckpoint = transform.position;
             lastRotation = transform.rotation;
+            lastLookRotation = playerView.rotation;
             checkpointAvailable = true;
         }
 
@@ -287,6 +289,8 @@ public class CPMPlayer : MonoBehaviour
             Debug.Log("Checkpoint teleport");
             transform.position = lastCheckpoint;
             transform.rotation = lastRotation;
+            playerView.rotation = lastLookRotation;
+            //transform.rotation = Quaternion.Euler(lastRotation.x, lastRotation.y, lastRotation.z);
             if (lifes > 0)
             {
                 lifes -= 1;
