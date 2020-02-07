@@ -42,6 +42,7 @@ public class CPMPlayer : MonoBehaviour
 {
     public Transform playerView;     // Camera
     public float playerViewYOffset = 0.6f; // The height at which the camera is bound to
+    public float playerViewYOffsetCrouch = 0f; // The height at which the camera is bound to while crouching
     public float xMouseSensitivity = 60.0f;
     public float yMouseSensitivity = 60.0f;
 //
@@ -61,7 +62,7 @@ public class CPMPlayer : MonoBehaviour
     public float sideStrafeSpeed = 1.0f;          // What the max speed to generate when side strafing
     public float jumpSpeed = 8.0f;                // The speed at which the character's up axis gains when hitting jump
     public float sneakSpeed = 0.6f;               // The speed at which the character can sneak
-    public float crouchSpeed = 0.4f;              // The speed at which the character can crouch  
+    public float crouchSpeed = 0.5f;              // The speed at which the character can crouch  
     public bool holdJumpToBhop = false;           // When enabled allows player to just hold jump button to keep on bhopping perfectly. Beware: smells like casual.
 
     /*print() style */
@@ -112,12 +113,12 @@ public class CPMPlayer : MonoBehaviour
     public float boost4 = 1.2f;
     public float boost5 = 1.2f;
 
+
+
     private Rigidbody playerRB;
 
-  
+    CharacterController capCol;
 
-
-    
 
     private void Start()
     {
@@ -140,7 +141,11 @@ public class CPMPlayer : MonoBehaviour
 
         _controller = GetComponent<CharacterController>();
 
-        //JumpPad imit
+        //Crouch init
+        //capCol = GetComponent<CapsuleCollider>();
+        capCol = gameObject.GetComponent<CharacterController>();
+
+        //JumpPad init
         playerRB = GetComponent<Rigidbody>();
     }
 
@@ -200,21 +205,44 @@ public class CPMPlayer : MonoBehaviour
             transform.position.z);
 
         //Sneaking & Crouching
+
+        Vector3 center = capCol.center;
+
+        //Sneaking
         if (Input.GetKey("left shift"))
         {
             speedControl = sneakSpeed;
             Sneaking = true;
         }
 
+        //Crouching
+
         else if (Input.GetKey("left ctrl"))
         {
             speedControl = crouchSpeed;
+            playerView.position = new Vector3(
+                transform.position.x,
+                transform.position.y + playerViewYOffsetCrouch,
+                transform.position.z);
+            capCol.height = 1f;
+            center.y = -0.5f;
+
+            capCol.center = center;
+
             Crouching = true;
         }
 
         else
         {
             speedControl = 1.0f;
+            playerView.position = new Vector3(
+                transform.position.x,
+                transform.position.y + playerViewYOffset,
+                transform.position.z);
+            capCol.height = 2f;
+            center.y = 0f;
+
+            capCol.center = center;
             Crouching = false;
         }
     }
