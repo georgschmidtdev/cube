@@ -136,6 +136,11 @@ public class CPMPlayer : MonoBehaviour
     //Collectibles
     private int lifes = 0;
 
+    // Sound
+    public AudioSource Jumpsound;
+    public AudioSource Landingsound;
+    private bool PlaySound = true;
+
 
     private void Start()
     {
@@ -306,11 +311,32 @@ public class CPMPlayer : MonoBehaviour
             Debug.Log("Start teleport");
             transform.position = startPosition;
         }
+
+        //SOUND
+
+        if (capCol.isGrounded && PlaySound == true)
+        {
+            Landingsound.Play();
+            PlaySound = false;
+
+
+        }
+        else if (!capCol.isGrounded)
+        {
+            PlaySound = true;
+        }
+
+
+        if (capCol.isGrounded && Input.GetButton("Jump"))
+        {
+            Jumpsound.Play();
+        }
+
     }
 
-     /*******************************************************************************************************\
-    |* MOVEMENT
-    \*******************************************************************************************************/
+    /*******************************************************************************************************\
+   |* MOVEMENT
+   \*******************************************************************************************************/
 
     /**
      * Sets the movement direction based on player input
@@ -482,26 +508,46 @@ public class CPMPlayer : MonoBehaviour
 
         if (other.gameObject.CompareTag("JumpPad1"))
         {
+            // Sound von Jumppad abspielen
+            AudioSource audio = other.gameObject.GetComponent<AudioSource>();
+            audio.Play();
+
             playerVelocity.y = jumpSpeed * force1;
         }
 
         if (other.gameObject.CompareTag("JumpPad2"))
         {
+            // Sound von Jumppad abspielen
+            AudioSource audio = other.gameObject.GetComponent<AudioSource>();
+            audio.Play();
+
             playerVelocity.y = jumpSpeed * force2 * 0.9f;
         }
 
         if (other.gameObject.CompareTag("JumpPad3"))
         {
+            // Sound von Jumppad abspielen
+            AudioSource audio = other.gameObject.GetComponent<AudioSource>();
+            audio.Play();
+
             playerVelocity.y = jumpSpeed * force3;
         }
 
         /*if (other.gameObject.CompareTag("JumpPad4"))
         {
+            // Sound von Jumppad abspielen
+            AudioSource audio = other.gameObject.GetComponent<AudioSource>();
+            audio.Play();
+
             playerVelocity.y = jumpSpeed * force4;
         }
 
         if (other.gameObject.CompareTag("JumpPad5"))
         {
+            // Sound von Jumppad abspielen
+            AudioSource audio = other.gameObject.GetComponent<AudioSource>();
+            audio.Play();
+
             playerVelocity.y = jumpSpeed * force5;
         }*/
 
@@ -509,6 +555,10 @@ public class CPMPlayer : MonoBehaviour
 
         if (other.gameObject.CompareTag("BoostPad1"))
         {
+            // Sound von Jumppad abspielen
+            AudioSource audio = other.gameObject.GetComponent<AudioSource>();
+            audio.Play();
+
             playerVelocity.y = jumpSpeed * boost1;
             playerVelocity.z = (playerVelocity.z + wishdir.z) * boost2 / 6f;
             playerVelocity.x = (playerVelocity.x + wishdir.x) * boost2 / 6f;
@@ -516,6 +566,10 @@ public class CPMPlayer : MonoBehaviour
 
         if (other.gameObject.CompareTag("BoostPad2"))
         {
+            // Sound von Jumppad abspielen
+            AudioSource audio = other.gameObject.GetComponent<AudioSource>();
+            audio.Play();
+
             playerVelocity.y = jumpSpeed * boost2 * 0.9f;
             playerVelocity.z = (playerVelocity.z + wishdir.z) * boost2 / 4f;
             playerVelocity.x = (playerVelocity.x + wishdir.x) * boost2 / 4f;
@@ -523,6 +577,10 @@ public class CPMPlayer : MonoBehaviour
 
         if (other.gameObject.CompareTag("BoostPad3"))
         {
+            // Sound von Jumppad abspielen
+            AudioSource audio = other.gameObject.GetComponent<AudioSource>();
+            audio.Play();
+
             playerVelocity.y = jumpSpeed * boost3 * 0.6f;
             playerVelocity.z = (playerVelocity.z + wishdir.z) * boost2 / 2f;
             playerVelocity.x = (playerVelocity.x + wishdir.x) * boost2 / 2f;
@@ -530,11 +588,19 @@ public class CPMPlayer : MonoBehaviour
 
         /*if (other.gameObject.CompareTag("BoostPad4"))
         {
+            // Sound von Jumppad abspielen
+            AudioSource audio = other.gameObject.GetComponent<AudioSource>();
+            audio.Play();
+
             playerVelocity.y = jumpSpeed * boost4;
         }
 
         if (other.gameObject.CompareTag("BoostPad5"))
         {
+            
+            // Sound von Jumppad abspielen
+            AudioSource audio = other.gameObject.GetComponent<AudioSource>();
+            audio.Play();
             playerVelocity.y = jumpSpeed * boost5;
         } */
 
