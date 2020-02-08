@@ -18,15 +18,21 @@ public class killPlane : MonoBehaviour
     void Update()
     {
         transform.Translate(new Vector3(0, 1, 0) * movementSpeed * Time.deltaTime);
+
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            transform.position = startPos;
+        }
     }
 
     void OnTriggerEnter(Collider other)
     {
 ;        if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("dead");
+            //Debug.Log("dead");
             transform.position = startPos;
             // DEATHSCREEN + RESPAWN + Current Time METHODE
         }
+        
     }
 }

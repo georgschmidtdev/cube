@@ -9,9 +9,8 @@ public class TimerStartTrigger : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        timerTrigger.resetTimer();
-        timerTrigger.startTimer();
-        
+            timerTrigger.resetTimer();
+            timerTrigger.startTimer();
     }
 }
 

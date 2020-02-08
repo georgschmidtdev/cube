@@ -175,6 +175,28 @@ public class CPMPlayer : MonoBehaviour
 
     private void Update()
     {
+
+        //SOUND
+
+        if (capCol.isGrounded && PlaySound == true)
+        {
+            Landingsound.Play();
+            PlaySound = false;
+
+
+        }
+        else if (!capCol.isGrounded)
+        {
+            PlaySound = true;
+        }
+
+
+        if (capCol.isGrounded && Input.GetButton("Jump"))
+        {
+            Debug.Log("Jumpsound");
+            Jumpsound.Play();
+        }
+
         // Do FPS calculation
         frameCount++;
         dt += Time.deltaTime;
@@ -328,26 +350,6 @@ public class CPMPlayer : MonoBehaviour
         {
             Debug.Log("Start teleport");
             transform.position = startPosition;
-        }
-
-        //SOUND
-
-        if (capCol.isGrounded && PlaySound == true)
-        {
-            Landingsound.Play();
-            PlaySound = false;
-
-
-        }
-        else if (!capCol.isGrounded)
-        {
-            PlaySound = true;
-        }
-
-
-        if (capCol.isGrounded && Input.GetButton("Jump"))
-        {
-            Jumpsound.Play();
         }
 
     }
