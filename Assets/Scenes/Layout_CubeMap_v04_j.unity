@@ -1645,6 +1645,9 @@ MonoBehaviour:
   boost3: 6
   startPosition: {x: -38.73, y: 1.66, z: -38.94}
   gameMode: 1
+  Jumpsound: {fileID: 0}
+  Landingsound: {fileID: 0}
+  Deathsound: {fileID: 0}
 --- !u!143 &454499469
 CharacterController:
   m_ObjectHideFlags: 0
@@ -4594,11 +4597,11 @@ GameObject:
   - component: {fileID: 1226022849}
   m_Layer: 0
   m_Name: killPlane
-  m_TagString: Untagged
+  m_TagString: killPlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &1226022844
 BoxCollider:
   m_ObjectHideFlags: 0

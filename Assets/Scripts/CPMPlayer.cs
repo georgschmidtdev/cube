@@ -115,7 +115,6 @@ public class CPMPlayer : MonoBehaviour
 
     
     //Player Components
-
     private Rigidbody playerRB;
     CharacterController capCol;
 
@@ -127,8 +126,10 @@ public class CPMPlayer : MonoBehaviour
     private Quaternion lastLookRotation;
 
     //Start Point
-
     public Vector3 startPosition = new Vector3(-38.73f, 1.66f, -38.94f);
+
+    //Alive?
+    private bool isdead = false;
 
     //Game Modes
     public int gameMode = 1;
@@ -139,6 +140,7 @@ public class CPMPlayer : MonoBehaviour
     // Sound
     public AudioSource Jumpsound;
     public AudioSource Landingsound;
+    public AudioSource Deathsound;
     private bool PlaySound = true;
 
 
@@ -268,6 +270,17 @@ public class CPMPlayer : MonoBehaviour
 
             capCol.center = center;
             Crouching = false;
+        }
+
+        //ALIVE?
+        if(isdead == true)
+        {
+            Debug.Log("Player died.");
+            transform.position = startPosition;
+
+            Deathsound.Play();
+
+            DeathScreen();
         }
 
         // CUSTOM CHECKPOINTS 
@@ -508,99 +521,101 @@ public class CPMPlayer : MonoBehaviour
 
         if (other.gameObject.CompareTag("JumpPad1"))
         {
+            playerVelocity.y = jumpSpeed * force1;
+
             // Sound von Jumppad abspielen
             AudioSource audio = other.gameObject.GetComponent<AudioSource>();
             audio.Play();
-
-            playerVelocity.y = jumpSpeed * force1;
         }
 
         if (other.gameObject.CompareTag("JumpPad2"))
         {
+            playerVelocity.y = jumpSpeed * force2 * 0.9f;
+
             // Sound von Jumppad abspielen
             AudioSource audio = other.gameObject.GetComponent<AudioSource>();
             audio.Play();
-            playerVelocity.y = jumpSpeed * force2 * 0.9f;
         }
 
         if (other.gameObject.CompareTag("JumpPad3"))
         {
+            playerVelocity.y = jumpSpeed * force3;
+
             // Sound von Jumppad abspielen
             AudioSource audio = other.gameObject.GetComponent<AudioSource>();
             audio.Play();
-            playerVelocity.y = jumpSpeed * force3;
         }
 
         /*if (other.gameObject.CompareTag("JumpPad4"))
         {
+            playerVelocity.y = jumpSpeed * force4;
+
             // Sound von Jumppad abspielen
             AudioSource audio = other.gameObject.GetComponent<AudioSource>();
             audio.Play();
-
-            playerVelocity.y = jumpSpeed * force4;
         }
 
         if (other.gameObject.CompareTag("JumpPad5"))
         {
+            playerVelocity.y = jumpSpeed * force5;
+            
             // Sound von Jumppad abspielen
             AudioSource audio = other.gameObject.GetComponent<AudioSource>();
             audio.Play();
-
-            playerVelocity.y = jumpSpeed * force5;
         }*/
 
         //Boostpads
 
         if (other.gameObject.CompareTag("BoostPad1"))
         {
-            // Sound von Jumppad abspielen
-            AudioSource audio = other.gameObject.GetComponent<AudioSource>();
-            audio.Play();
-
             playerVelocity.y = jumpSpeed * boost1;
             playerVelocity.z = (playerVelocity.z + wishdir.z) * boost2 / 6f;
             playerVelocity.x = (playerVelocity.x + wishdir.x) * boost2 / 6f;
-        }
-
-        if (other.gameObject.CompareTag("BoostPad2"))
-        {
-            // Sound von Jumppad abspielen
-            AudioSource audio = other.gameObject.GetComponent<AudioSource>();
-            audio.Play();
-
-            playerVelocity.y = jumpSpeed * boost2 * 0.9f;
-            playerVelocity.z = (playerVelocity.z + wishdir.z) * boost2 / 4f;
-            playerVelocity.x = (playerVelocity.x + wishdir.x) * boost2 / 4f;
-
-        }
-
-        if (other.gameObject.CompareTag("BoostPad3"))
-        {
-            // Sound von Jumppad abspielen
-            AudioSource audio = other.gameObject.GetComponent<AudioSource>();
-            audio.Play();
-
-            playerVelocity.y = jumpSpeed * boost3 * 0.6f;
-            playerVelocity.z = (playerVelocity.z + wishdir.z) * boost2 / 2f;
-            playerVelocity.x = (playerVelocity.x + wishdir.x) * boost2 / 2f;
-        }
-
-        /*if (other.gameObject.CompareTag("BoostPad4"))
-        {
-            // Sound von Jumppad abspielen
-            AudioSource audio = other.gameObject.GetComponent<AudioSource>();
-            audio.Play();
-
-            playerVelocity.y = jumpSpeed * boost4;
-        }
-
-        if (other.gameObject.CompareTag("BoostPad5"))
-        {
             
             // Sound von Jumppad abspielen
             AudioSource audio = other.gameObject.GetComponent<AudioSource>();
             audio.Play();
+        }
+
+        if (other.gameObject.CompareTag("BoostPad2"))
+        {
+            playerVelocity.y = jumpSpeed * boost2 * 0.9f;
+            playerVelocity.z = (playerVelocity.z + wishdir.z) * boost2 / 4f;
+            playerVelocity.x = (playerVelocity.x + wishdir.x) * boost2 / 4f;
+            
+            // Sound von Jumppad abspielen
+            AudioSource audio = other.gameObject.GetComponent<AudioSource>();
+            audio.Play();
+        }
+
+        if (other.gameObject.CompareTag("BoostPad3"))
+        {
+            playerVelocity.y = jumpSpeed * boost3 * 0.6f;
+            playerVelocity.z = (playerVelocity.z + wishdir.z) * boost2 / 2f;
+            playerVelocity.x = (playerVelocity.x + wishdir.x) * boost2 / 2f;
+            
+            // Sound von Jumppad abspielen
+            AudioSource audio = other.gameObject.GetComponent<AudioSource>();
+            audio.Play();
+        }
+
+        /*if (other.gameObject.CompareTag("BoostPad4"))
+        {
+            playerVelocity.y = jumpSpeed * boost4;
+            
+            // Sound von Jumppad abspielen
+            AudioSource audio = other.gameObject.GetComponent<AudioSource>();
+            audio.Play();
+        }
+
+        if (other.gameObject.CompareTag("BoostPad5"))
+        {
             playerVelocity.y = jumpSpeed * boost5;
+            
+            // Sound von Jumppad abspielen
+            AudioSource audio = other.gameObject.GetComponent<AudioSource>();
+            audio.Play();
+            
         } */
 
         // COLLECTIBLES
@@ -610,7 +625,15 @@ public class CPMPlayer : MonoBehaviour
             lifes += 1;
         }
 
+        if (other.gameObject.CompareTag("killPlane"))
+        {
+            Debug.Log("dead");
+            isdead = true;
+        }
+
+
     }
+
 
 
 
@@ -675,4 +698,11 @@ private void ApplyFriction(float t)
         GUI.Label(new Rect(0, 15, 400, 100), "Speed: " + Mathf.Round(ups.magnitude * 100) / 100 + "ups", style);
         GUI.Label(new Rect(0, 30, 400, 100), "Top Speed: " + Mathf.Round(playerTopVelocity * 100) / 100 + "ups", style);
     }
+
+    private void DeathScreen()
+    {
+        Debug.Log("DeathScreen");
+    }
+
 }
+
