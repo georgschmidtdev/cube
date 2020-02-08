@@ -6,11 +6,12 @@ public class killPlane : MonoBehaviour
 {
 
     public float movementSpeed = 0.1f;
+    private Vector3 startPos = new Vector3(65f, -0.8f, -3f);
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        startPos = transform.position;
     }
 
     // Update is called once per frame
@@ -24,6 +25,7 @@ public class killPlane : MonoBehaviour
 ;        if (other.gameObject.CompareTag("Player"))
         {
             Debug.Log("dead");
+            transform.position = startPos;
             // DEATHSCREEN + RESPAWN + Current Time METHODE
         }
     }

@@ -273,14 +273,18 @@ public class CPMPlayer : MonoBehaviour
         }
 
         //ALIVE?
-        if(isdead == true)
+        if (isdead == true)
         {
-            Debug.Log("Player died.");
+            //Debug.Log("Player died.");
             transform.position = startPosition;
+            isdead = false;
 
-            Deathsound.Play();
+            checkpointPossible = false;
+            checkpointAvailable = false;
 
             DeathScreen();
+
+            Deathsound.Play();
         }
 
         // CUSTOM CHECKPOINTS 
@@ -625,9 +629,9 @@ public class CPMPlayer : MonoBehaviour
             lifes += 1;
         }
 
-        if (other.gameObject.CompareTag("killPlane"))
+        if (other.gameObject.CompareTag("killPlane") && isdead == false)
         {
-            Debug.Log("dead");
+            //Debug.Log("hit Plane");
             isdead = true;
         }
 
