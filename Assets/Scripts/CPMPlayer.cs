@@ -344,8 +344,8 @@ public class CPMPlayer : MonoBehaviour
             PlaySound = true;
         }
 
-
-        if (capCol.isGrounded && Input.GetButton("Jump"))
+  
+        if ( Input.GetButton("Jump"))
         {
             Jumpsound.Play();
         }
