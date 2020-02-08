@@ -321,7 +321,7 @@ public class CPMPlayer : MonoBehaviour
             checkpointPossible = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.E) && checkpointPossible == true && gameMode == 1 && lifes > 0)
+        if (Input.GetKeyDown(KeyCode.E) && checkpointPossible == true && gameMode == 1 )
         {
 
             Debug.Log("Checkpoint set");
