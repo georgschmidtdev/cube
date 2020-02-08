@@ -7,10 +7,14 @@ public class TimerStartTrigger : MonoBehaviour
 {
     public Timer timerTrigger;
     
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider collision)
     {
+        if(collision.tag == "Player")
+        {
             timerTrigger.resetTimer();
             timerTrigger.startTimer();
+        }
+            
     }
 }
 
