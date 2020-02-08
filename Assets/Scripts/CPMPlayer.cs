@@ -45,7 +45,7 @@ public class CPMPlayer : MonoBehaviour
     public float playerViewYOffsetCrouch = 0f; // The height at which the camera is bound to while crouching
     public float xMouseSensitivity = 60.0f;
     public float yMouseSensitivity = 60.0f;
-//
+    //
     /*Frame occuring factors*/
     public float gravity = 20.0f;
 
@@ -120,6 +120,12 @@ public class CPMPlayer : MonoBehaviour
     CharacterController capCol;
 
 
+    // Sound
+    public AudioSource Jumpsound;
+    public AudioSource Landingsound;
+    private bool PlaySound = true;
+
+
     private void Start()
     {
         // Hide the cursor
@@ -147,10 +153,38 @@ public class CPMPlayer : MonoBehaviour
 
         //JumpPad init
         playerRB = GetComponent<Rigidbody>();
+       
+
+
     }
 
     private void Update()
+
     {
+        if (capCol.isGrounded && PlaySound == true)
+        {
+            Landingsound.Play();
+            PlaySound = false;
+
+
+        }
+        else if(!capCol.isGrounded)
+        {
+            PlaySound = true;
+        }
+
+        
+        if (capCol.isGrounded && Input.GetButton("Jump"))
+        {
+            Jumpsound.Play();
+        }
+        
+
+
+        
+
+
+
         // Do FPS calculation
         frameCount++;
         dt += Time.deltaTime;
@@ -159,9 +193,10 @@ public class CPMPlayer : MonoBehaviour
             fps = Mathf.Round(frameCount / dt);
             frameCount = 0;
             dt -= 1.0f / fpsDisplayRate;
-                 }
+        }
         /* Ensure that the cursor is locked into the screen */
-        if (Cursor.lockState != CursorLockMode.Locked) {
+        if (Cursor.lockState != CursorLockMode.Locked)
+        {
             if (Input.GetButtonDown("Fire1"))
                 Cursor.lockState = CursorLockMode.Locked;
         }
@@ -171,21 +206,23 @@ public class CPMPlayer : MonoBehaviour
         rotY += Input.GetAxisRaw("Mouse X") * yMouseSensitivity * 0.02f;
 
         // Clamp the X rotation
-        if(rotX < -90)
+        if (rotX < -90)
             rotX = -90;
-        else if(rotX > 90)
+        else if (rotX > 90)
             rotX = 90;
 
         this.transform.rotation = Quaternion.Euler(0, rotY, 0); // Rotates the collider
-        playerView.rotation     = Quaternion.Euler(rotX, rotY, 0); // Rotates the camera
+        playerView.rotation = Quaternion.Euler(rotX, rotY, 0); // Rotates the camera
 
-        
+
 
         /* Movement, here's the important part */
         QueueJump();
-        if(_controller.isGrounded)
+        if (_controller.isGrounded)
             GroundMove();
-        else if(!_controller.isGrounded)
+
+
+        else if (!_controller.isGrounded)
             AirMove();
 
         // Move the controller
@@ -194,7 +231,7 @@ public class CPMPlayer : MonoBehaviour
         /* Calculate top velocity */
         Vector3 udp = playerVelocity;
         udp.y = 0.0f;
-        if(udp.magnitude > playerTopVelocity)
+        if (udp.magnitude > playerTopVelocity)
             playerTopVelocity = udp.magnitude;
 
         //Need to move the camera after the player has been moved because otherwise the camera will clip the player if going fast enough and will always be 1 frame behind.
@@ -245,11 +282,13 @@ public class CPMPlayer : MonoBehaviour
             capCol.center = center;
             Crouching = false;
         }
+
+
     }
 
-     /*******************************************************************************************************\
-    |* MOVEMENT
-    \*******************************************************************************************************/
+    /*******************************************************************************************************\
+   |* MOVEMENT
+   \*******************************************************************************************************/
 
     /**
      * Sets the movement direction based on player input
@@ -257,7 +296,7 @@ public class CPMPlayer : MonoBehaviour
     private void SetMovementDir()
     {
         _cmd.forwardMove = Input.GetAxisRaw("Vertical");
-        _cmd.rightMove   = Input.GetAxisRaw("Horizontal");
+        _cmd.rightMove = Input.GetAxisRaw("Horizontal");
     }
 
     /**
@@ -265,16 +304,18 @@ public class CPMPlayer : MonoBehaviour
      */
     private void QueueJump()
     {
-        if(holdJumpToBhop)
+        if (holdJumpToBhop)
         {
             wishJump = Input.GetButton("Jump");
             return;
         }
 
-        if(Input.GetButtonDown("Jump") && !wishJump)
+        if (Input.GetButtonDown("Jump") && !wishJump)
             wishJump = true;
-        if(Input.GetButtonUp("Jump"))
+
+        if (Input.GetButtonUp("Jump"))
             wishJump = false;
+
     }
 
     /**
@@ -285,10 +326,10 @@ public class CPMPlayer : MonoBehaviour
         Vector3 wishdir;
         float wishvel = airAcceleration;
         float accel;
-        
+
         SetMovementDir();
 
-        wishdir =  new Vector3(_cmd.rightMove, 0, _cmd.forwardMove);
+        wishdir = new Vector3(_cmd.rightMove, 0, _cmd.forwardMove);
         wishdir = transform.TransformDirection(wishdir);
 
         float wishspeed = wishdir.magnitude;
@@ -304,15 +345,15 @@ public class CPMPlayer : MonoBehaviour
         else
             accel = airAcceleration;
         // If the player is ONLY strafing left or right
-        if(_cmd.forwardMove == 0 && _cmd.rightMove != 0)
+        if (_cmd.forwardMove == 0 && _cmd.rightMove != 0)
         {
-            if(wishspeed > sideStrafeSpeed)
+            if (wishspeed > sideStrafeSpeed)
                 wishspeed = sideStrafeSpeed;
             accel = sideStrafeAcceleration;
         }
 
         Accelerate(wishdir, wishspeed, accel);
-        if(airControl > 0)
+        if (airControl > 0)
             AirControl(wishdir, wishspeed2);
         // !CPM: Aircontrol
 
@@ -333,7 +374,7 @@ public class CPMPlayer : MonoBehaviour
         float k;
 
         // Can't control movement if not moving forward or backward
-        if(Mathf.Abs(_cmd.forwardMove) < 0.001 || Mathf.Abs(wishspeed) < 0.001)
+        if (Mathf.Abs(_cmd.forwardMove) < 0.001 || Mathf.Abs(wishspeed) < 0.001)
             return;
         zspeed = playerVelocity.y;
         playerVelocity.y = 0;
@@ -396,7 +437,7 @@ public class CPMPlayer : MonoBehaviour
         // Reset the gravity velocity
         playerVelocity.y = -gravity * Time.deltaTime;
 
-        if(wishJump)
+        if (wishJump)
         {
             playerVelocity.y = jumpSpeed;
             wishJump = false;
@@ -498,10 +539,10 @@ public class CPMPlayer : MonoBehaviour
     }
 
 
-/**
- * Applies friction to the player, called in both the air and on the ground
- */
-private void ApplyFriction(float t)
+    /**
+     * Applies friction to the player, called in both the air and on the ground
+     */
+    private void ApplyFriction(float t)
     {
         Vector3 vec = playerVelocity; // Equivalent to: VectorCopy();
         float speed;
@@ -514,7 +555,7 @@ private void ApplyFriction(float t)
         drop = 0.0f;
 
         /* Only if the player is on the ground then apply friction */
-        if(_controller.isGrounded)
+        if (_controller.isGrounded)
         {
             control = speed < runDeacceleration ? runDeacceleration : speed;
             drop = control * friction * Time.deltaTime * t;
@@ -522,9 +563,9 @@ private void ApplyFriction(float t)
 
         newspeed = speed - drop;
         playerFriction = newspeed;
-        if(newspeed < 0)
+        if (newspeed < 0)
             newspeed = 0;
-        if(speed > 0)
+        if (speed > 0)
             newspeed /= speed;
 
         playerVelocity.x *= newspeed;
@@ -539,18 +580,18 @@ private void ApplyFriction(float t)
 
         currentspeed = Vector3.Dot(playerVelocity, wishdir);
         addspeed = wishspeed - currentspeed;
-        if(addspeed <= 0)
+        if (addspeed <= 0)
             return;
         accelspeed = accel * Time.deltaTime * wishspeed;
-        if(accelspeed > addspeed)
+        if (accelspeed > addspeed)
             accelspeed = addspeed;
 
         playerVelocity.x += accelspeed * wishdir.x;
         playerVelocity.z += accelspeed * wishdir.z;
     }
 
-   
-    
+
+
     private void OnGUI()
     {
         GUI.Label(new Rect(0, 0, 400, 100), "FPS: " + fps, style);
@@ -559,4 +600,6 @@ private void ApplyFriction(float t)
         GUI.Label(new Rect(0, 15, 400, 100), "Speed: " + Mathf.Round(ups.magnitude * 100) / 100 + "ups", style);
         GUI.Label(new Rect(0, 30, 400, 100), "Top Speed: " + Mathf.Round(playerTopVelocity * 100) / 100 + "ups", style);
     }
+
+
 }
