@@ -24,7 +24,7 @@ public class killPlane : MonoBehaviour
 ;        if (other.gameObject.CompareTag("Player"))
         {
             Debug.Log("dead");
-            // DEATHSCREEN + RESPAWN + Current Time
+            // DEATHSCREEN + RESPAWN + Current Time METHODE
         }
     }
 }
