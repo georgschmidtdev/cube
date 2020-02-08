@@ -104,25 +104,43 @@ public class CPMPlayer : MonoBehaviour
     public float force1 = 1.2f;
     public float force2 = 1.5f;
     public float force3 = 2f;
-    public float force4 = 1.2f;
-    public float force5 = 1.2f;
+    //public float force4 = 1.2f;
+    //public float force5 = 1.2f;
 
     public float boost1 = 1.2f;
     public float boost2 = 1.5f;
     public float boost3 = 2f;
-    public float boost4 = 1.2f;
-    public float boost5 = 1.2f;
+    //public float boost4 = 1.2f;
+    //public float boost5 = 1.2f;
 
-
-
+    
+    //Player Components
     private Rigidbody playerRB;
-
     CharacterController capCol;
 
+    //Custom Checkpoints
+    private bool checkpointPossible = false;
+    private bool checkpointAvailable = false;
+    private Vector3 lastCheckpoint = Vector3.zero;
+    private Quaternion lastRotation;
+    private Quaternion lastLookRotation;
+
+    //Start Point
+    public Vector3 startPosition = new Vector3(-38.73f, 1.66f, -38.94f);
+
+    //Alive?
+    private bool isdead = false;
+
+    //Game Modes
+    public int gameMode = 1;
+
+    //Collectibles
+    private int lifes = 0;
 
     // Sound
     public AudioSource Jumpsound;
     public AudioSource Landingsound;
+    public AudioSource Deathsound;
     private bool PlaySound = true;
 
 
@@ -153,38 +171,10 @@ public class CPMPlayer : MonoBehaviour
 
         //JumpPad init
         playerRB = GetComponent<Rigidbody>();
-       
-
-
     }
 
     private void Update()
-
     {
-        if (capCol.isGrounded && PlaySound == true)
-        {
-            Landingsound.Play();
-            PlaySound = false;
-
-
-        }
-        else if(!capCol.isGrounded)
-        {
-            PlaySound = true;
-        }
-
-        
-        if (capCol.isGrounded && Input.GetButton("Jump"))
-        {
-            Jumpsound.Play();
-        }
-        
-
-
-        
-
-
-
         // Do FPS calculation
         frameCount++;
         dt += Time.deltaTime;
@@ -220,8 +210,6 @@ public class CPMPlayer : MonoBehaviour
         QueueJump();
         if (_controller.isGrounded)
             GroundMove();
-
-
         else if (!_controller.isGrounded)
             AirMove();
 
@@ -236,6 +224,7 @@ public class CPMPlayer : MonoBehaviour
 
         //Need to move the camera after the player has been moved because otherwise the camera will clip the player if going fast enough and will always be 1 frame behind.
         // Set the camera's position to the transform
+
         playerView.position = new Vector3(
             transform.position.x,
             transform.position.y + playerViewYOffset,
@@ -246,6 +235,7 @@ public class CPMPlayer : MonoBehaviour
         Vector3 center = capCol.center;
 
         //Sneaking
+
         if (Input.GetKey("left shift"))
         {
             speedControl = sneakSpeed;
@@ -283,6 +273,82 @@ public class CPMPlayer : MonoBehaviour
             Crouching = false;
         }
 
+        //ALIVE?
+        if (isdead == true)
+        {
+            //Debug.Log("Player died.");
+            transform.position = startPosition;
+            isdead = false;
+
+            checkpointPossible = false;
+            checkpointAvailable = false;
+
+            DeathScreen();
+
+            Deathsound.Play();
+        }
+
+        // CUSTOM CHECKPOINTS 
+
+        if (capCol.isGrounded)
+        {
+            checkpointPossible = true;
+        }
+        else
+        {
+            checkpointPossible = false;
+        }
+
+        if (Input.GetKeyDown(KeyCode.E) && checkpointPossible == true && gameMode == 1 && lifes > 0)
+        {
+
+            Debug.Log("Checkpoint set");
+            lastCheckpoint = transform.position;
+            lastRotation = transform.rotation;
+            lastLookRotation = playerView.rotation;
+            checkpointAvailable = true;
+        }
+
+        //RESPAWN 
+
+        if (Input.GetKeyDown(KeyCode.R) && checkpointAvailable == true && lifes > 0)
+        {
+            Debug.Log("Checkpoint teleport");
+            transform.position = lastCheckpoint;
+            transform.rotation = lastRotation;
+            playerView.rotation = lastLookRotation;
+            //transform.rotation = Quaternion.Euler(lastRotation.x, lastRotation.y, lastRotation.z);
+            if (lifes > 0)
+            {
+                lifes -= 1;
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            Debug.Log("Start teleport");
+            transform.position = startPosition;
+        }
+
+        //SOUND
+
+        if (capCol.isGrounded && PlaySound == true)
+        {
+            Landingsound.Play();
+            PlaySound = false;
+
+
+        }
+        else if (!capCol.isGrounded)
+        {
+            PlaySound = true;
+        }
+
+
+        if (capCol.isGrounded && Input.GetButton("Jump"))
+        {
+            Jumpsound.Play();
+        }
 
     }
 
@@ -312,10 +378,8 @@ public class CPMPlayer : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && !wishJump)
             wishJump = true;
-
         if (Input.GetButtonUp("Jump"))
             wishJump = false;
-
     }
 
     /**
@@ -329,7 +393,8 @@ public class CPMPlayer : MonoBehaviour
 
         SetMovementDir();
 
-        wishdir = new Vector3(_cmd.rightMove, 0, _cmd.forwardMove);
+        wishdir =  new Vector3(_cmd.rightMove, 0, 0 /*_cmd.forwardMove*/);
+
         wishdir = transform.TransformDirection(wishdir);
 
         float wishspeed = wishdir.magnitude;
@@ -462,87 +527,126 @@ public class CPMPlayer : MonoBehaviour
 
         if (other.gameObject.CompareTag("JumpPad1"))
         {
+            playerVelocity.y = jumpSpeed * force1;
+
             // Sound von Jumppad abspielen
             AudioSource audio = other.gameObject.GetComponent<AudioSource>();
             audio.Play();
-
-            playerVelocity.y = jumpSpeed * force1;
         }
 
         if (other.gameObject.CompareTag("JumpPad2"))
         {
+            playerVelocity.y = jumpSpeed * force2 * 0.9f;
+
             // Sound von Jumppad abspielen
             AudioSource audio = other.gameObject.GetComponent<AudioSource>();
             audio.Play();
-            playerVelocity.y = jumpSpeed * force2;
+
         }
 
         if (other.gameObject.CompareTag("JumpPad3"))
         {
+            playerVelocity.y = jumpSpeed * force3;
+
             // Sound von Jumppad abspielen
             AudioSource audio = other.gameObject.GetComponent<AudioSource>();
             audio.Play();
-            playerVelocity.y = jumpSpeed * force3;
         }
 
         /*if (other.gameObject.CompareTag("JumpPad4"))
         {
             playerVelocity.y = jumpSpeed * force4;
-        }
 
+            // Sound von Jumppad abspielen
+            AudioSource audio = other.gameObject.GetComponent<AudioSource>();
+            audio.Play();
+        }
         if (other.gameObject.CompareTag("JumpPad5"))
         {
             playerVelocity.y = jumpSpeed * force5;
+            
+            // Sound von Jumppad abspielen
+            AudioSource audio = other.gameObject.GetComponent<AudioSource>();
+            audio.Play();
         }*/
 
         //Boostpads
 
         if (other.gameObject.CompareTag("BoostPad1"))
         {
-            // Sound von BoostPad abspielen
+            playerVelocity.y = jumpSpeed * boost1;
+            playerVelocity.z = (playerVelocity.z + wishdir.z) * boost2 / 6f;
+            playerVelocity.x = (playerVelocity.x + wishdir.x) * boost2 / 6f;
+            
+            // Sound von Jumppad abspielen
             AudioSource audio = other.gameObject.GetComponent<AudioSource>();
             audio.Play();
-            playerVelocity.y = jumpSpeed * boost1;
-            playerVelocity.z = (playerVelocity.z + wishdir.z) * boost2 / 1.5f;
-            playerVelocity.x = (playerVelocity.x + wishdir.x) * boost2 / 1.5f;
         }
 
         if (other.gameObject.CompareTag("BoostPad2"))
         {
-            // Sound von BoostPad abspielen
+            playerVelocity.y = jumpSpeed * boost2 * 0.9f;
+            playerVelocity.z = (playerVelocity.z + wishdir.z) * boost2 / 4f;
+            playerVelocity.x = (playerVelocity.x + wishdir.x) * boost2 / 4f;
+
+            // Sound von Jumppad abspielen
             AudioSource audio = other.gameObject.GetComponent<AudioSource>();
             audio.Play();
-            playerVelocity.y = jumpSpeed * boost2;
-            playerVelocity.z = (playerVelocity.z + wishdir.z) * boost2 / 1.5f;
-            playerVelocity.x = (playerVelocity.x + wishdir.x) * boost2 / 1.5f;
+
         }
 
         if (other.gameObject.CompareTag("BoostPad3"))
         {
-            // Sound von BoostPad abspielen
+            playerVelocity.y = jumpSpeed * boost3 * 0.6f;
+            playerVelocity.z = (playerVelocity.z + wishdir.z) * boost2 / 2f;
+            playerVelocity.x = (playerVelocity.x + wishdir.x) * boost2 / 2f;
+            
+            // Sound von Jumppad abspielen
             AudioSource audio = other.gameObject.GetComponent<AudioSource>();
             audio.Play();
-            playerVelocity.y = jumpSpeed * boost3 / 1.5f;
-            playerVelocity.z = (playerVelocity.z + wishdir.z) * boost2 / 1.5f;
-            playerVelocity.x = (playerVelocity.x + wishdir.x) * boost2 / 1.5f;
+
         }
 
         /*if (other.gameObject.CompareTag("BoostPad4"))
         {
             playerVelocity.y = jumpSpeed * boost4;
+            
+            // Sound von Jumppad abspielen
+            AudioSource audio = other.gameObject.GetComponent<AudioSource>();
+            audio.Play();
         }
-
         if (other.gameObject.CompareTag("BoostPad5"))
         {
             playerVelocity.y = jumpSpeed * boost5;
+            
+            // Sound von Jumppad abspielen
+            AudioSource audio = other.gameObject.GetComponent<AudioSource>();
+            audio.Play();
+            
         } */
+
+        // COLLECTIBLES
+
+        if (other.gameObject.CompareTag("life"))
+        {
+            lifes += 1;
+        }
+
+        if (other.gameObject.CompareTag("killPlane") && isdead == false)
+        {
+            //Debug.Log("hit Plane");
+            isdead = true;
+        }
+
+
     }
 
 
-    /**
-     * Applies friction to the player, called in both the air and on the ground
-     */
-    private void ApplyFriction(float t)
+/**
+ * Applies friction to the player, called in both the air and on the ground
+ */
+private void ApplyFriction(float t)
+
     {
         Vector3 vec = playerVelocity; // Equivalent to: VectorCopy();
         float speed;
@@ -601,5 +705,9 @@ public class CPMPlayer : MonoBehaviour
         GUI.Label(new Rect(0, 30, 400, 100), "Top Speed: " + Mathf.Round(playerTopVelocity * 100) / 100 + "ups", style);
     }
 
+    private void DeathScreen()
+    {
+        Debug.Log("DeathScreen");
+    }
 
 }
