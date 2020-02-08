@@ -113,7 +113,7 @@ public class CPMPlayer : MonoBehaviour
     //public float boost4 = 1.2f;
     //public float boost5 = 1.2f;
 
-
+    
     //Player Components
 
     private Rigidbody playerRB;
@@ -125,6 +125,10 @@ public class CPMPlayer : MonoBehaviour
     private Vector3 lastCheckpoint = Vector3.zero;
     private Quaternion lastRotation;
     private Quaternion lastLookRotation;
+
+    //Start Point
+
+    public Vector3 startPosition = new Vector3(-38.73f, 1.66f, -38.94f);
 
     //Game Modes
     public int gameMode = 1;
@@ -284,7 +288,7 @@ public class CPMPlayer : MonoBehaviour
 
         //RESPAWN 
 
-        if (Input.GetKeyDown(KeyCode.R) && checkpointAvailable == true)
+        if (Input.GetKeyDown(KeyCode.R) && checkpointAvailable == true && lifes > 0)
         {
             Debug.Log("Checkpoint teleport");
             transform.position = lastCheckpoint;
@@ -295,6 +299,12 @@ public class CPMPlayer : MonoBehaviour
             {
                 lifes -= 1;
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            Debug.Log("Start teleport");
+            transform.position = startPosition;
         }
     }
 
