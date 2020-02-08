@@ -17,19 +17,30 @@ public class CheckpointTrigger : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-
-        if (gameObject.CompareTag("Checkpoint1")) 
+        if (other.gameObject.CompareTag("Player"))
         {
-            setString(1);   
-            
-        } else if (gameObject.CompareTag("Checkpoint2")) {
-            setString(2);
-        } else if (gameObject.CompareTag("Checkpoint3")) {
-            setString(3);
-        } else if (gameObject.CompareTag("Checkpoint4")) {
-            setString(4);
-        } else if (gameObject.CompareTag("Checkpoint5")) {
-            setString(5);
+
+            if (gameObject.CompareTag("Checkpoint1"))
+            {
+                setString(1);
+
+            }
+            else if (gameObject.CompareTag("Checkpoint2"))
+            {
+                setString(2);
+            }
+            else if (gameObject.CompareTag("Checkpoint3"))
+            {
+                setString(3);
+            }
+            else if (gameObject.CompareTag("Checkpoint4"))
+            {
+                setString(4);
+            }
+            else if (gameObject.CompareTag("Checkpoint5"))
+            {
+                setString(5);
+            }
         }
      }   
         public void setString(int checkpointNumber) 
