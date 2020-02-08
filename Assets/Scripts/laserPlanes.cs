@@ -18,7 +18,7 @@ public class laserPlanes : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        ; if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
             Debug.Log("dead");
             // DEATHSCREEN + RESPAWN + Current Time METHODE
