@@ -21,7 +21,7 @@ public class Pause : MonoBehaviour
 	{
 
 		//uses the p button to pause and unpause the game
-		if (Input.GetKeyDown(KeyCode.P))
+		if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))
 		{
 			if (Time.timeScale == 1)
 			{
