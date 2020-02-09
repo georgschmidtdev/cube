@@ -57,7 +57,7 @@ public class CPMPlayer : MonoBehaviour
     public float runDeacceleration = 10.0f;       // Deacceleration that occurs when running on the ground
     public float airAcceleration = 4.0f;          // Air accel
     public float airDecceleration = 4.0f;         // Deacceleration experienced when ooposite strafing
-    public float airControl = 1f;                 // How precise air control is
+    public float airControl = 1f;               // How precise air control is
     public float sideStrafeAcceleration = 60.0f;  // How fast acceleration occurs to get up to sideStrafeSpeed when
     public float sideStrafeSpeed = 1.0f;          // What the max speed to generate when side strafing
     public float jumpSpeed = 8.0f;                // The speed at which the character's up axis gains when hitting jump
