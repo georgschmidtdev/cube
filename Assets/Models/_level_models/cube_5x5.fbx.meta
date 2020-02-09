@@ -3,27 +3,7 @@ guid: 3cc6b0b9c7860ee41a26559d90164fa8
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: mat_cloth
-    second: {fileID: 2100000, guid: 6a83ef5794602f4498efe91ca5b83991, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: mat_inner
-    second: {fileID: 2100000, guid: e686f43932c53fb4696ccae49d7c13cd, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: mat_main
-    second: {fileID: 2100000, guid: 5c56b04fdbde5e84791eb04932ab3951, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: mat_rope
-    second: {fileID: 2100000, guid: d056d612454e20c4eb57a30531c1d5f4, type: 2}
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0

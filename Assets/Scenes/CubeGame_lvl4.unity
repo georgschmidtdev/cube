@@ -3423,6 +3423,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 137d71cc4f0a36d43a4fafd144539218, type: 3}
+--- !u!1 &354494508 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2834313044605617798, guid: 864ce262c594969479b6adb757997794,
+    type: 3}
+  m_PrefabInstance: {fileID: 1262560205}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &354494509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 354494508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 0}
+  isGlobal: 1
+  blendDistance: 0
+  weight: 1
+  priority: 0
 --- !u!1 &356285700 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: c16851d0c22a12949a69cfa04f3a7e5f,
@@ -12617,6 +12640,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 509c740f51d8b374b84aa6056a319f1a, type: 2}
     - target: {fileID: 8901900159053123059, guid: 2a9ec0f8b0ae1204695ee937839511b0,
         type: 3}
+<<<<<<< HEAD:Assets/Scenes/CubeGame_lvl4.unity
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
@@ -12640,6 +12664,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 56bc211cec513e1429b4784d6be825da, type: 2}
+=======
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ddd7809009f14be489e190437d47da86, type: 2}
+>>>>>>> parent of 7f156fe... model texturing:Assets/Scenes/CubeGame.unity
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a9ec0f8b0ae1204695ee937839511b0, type: 3}
 --- !u!1 &1574211415 stripped

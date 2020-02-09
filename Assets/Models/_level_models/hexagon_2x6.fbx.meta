@@ -3,22 +3,7 @@ guid: 5562255d5c8c2d142bbb786ebcff49a1
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: mat_cable
-    second: {fileID: 2100000, guid: 2eb5c428e91118048bacdc8f7cb8b0fa, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: mat_detail
-    second: {fileID: 2100000, guid: 793467875f05219408236ce8deae3433, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: mat_main
-    second: {fileID: 2100000, guid: 0f0f5da08bf8d45498e5102ef9f5ab7b, type: 2}
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
