@@ -15596,7 +15596,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 509c740f51d8b374b84aa6056a319f1a, type: 2}
     - target: {fileID: 8901900159053123059, guid: 2a9ec0f8b0ae1204695ee937839511b0,
         type: 3}
-<<<<<<< HEAD:Assets/Scenes/CubeGame_lvl4.unity
+
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
@@ -15620,11 +15620,7 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 56bc211cec513e1429b4784d6be825da, type: 2}
-=======
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: ddd7809009f14be489e190437d47da86, type: 2}
->>>>>>> parent of 7f156fe... model texturing:Assets/Scenes/CubeGame.unity
+
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a9ec0f8b0ae1204695ee937839511b0, type: 3}
 --- !u!1 &1574211415 stripped
