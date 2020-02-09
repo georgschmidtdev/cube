@@ -1534,13 +1534,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 173658271}
-  m_LocalRotation: {x: 0.41786805, y: 0.04612527, z: 0.041910186, w: 0.90636766}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -18.6, y: 23, z: -30.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 48.905003, y: 10.398001, z: 10.034}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!81 &173658273
 AudioListener:
   m_ObjectHideFlags: 0
@@ -2845,7 +2845,7 @@ Light:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 2.05
   m_Range: 100
-  m_SpotAngle: 151.7862
+  m_SpotAngle: 52.4
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
@@ -3090,7 +3090,7 @@ Light:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 2.05
   m_Range: 100
-  m_SpotAngle: 151.7862
+  m_SpotAngle: 52.4
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
@@ -4307,7 +4307,7 @@ Light:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 2.05
   m_Range: 100
-  m_SpotAngle: 151.7862
+  m_SpotAngle: 52.4
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
@@ -8116,7 +8116,7 @@ Light:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 2.05
   m_Range: 100
-  m_SpotAngle: 151.7862
+  m_SpotAngle: 52.4
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
@@ -11343,12 +11343,12 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 3b1a24b58c372584a9e4b671f5f25345,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.343053
+      value: 9.271032
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 3b1a24b58c372584a9e4b671f5f25345,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 47.673347
+      value: 47.53593
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 3b1a24b58c372584a9e4b671f5f25345,
         type: 3}
@@ -11358,22 +11358,22 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 3b1a24b58c372584a9e4b671f5f25345,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 1
+      value: -0.00000017881393
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 3b1a24b58c372584a9e4b671f5f25345,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00000032223758
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 3b1a24b58c372584a9e4b671f5f25345,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.00000029802322
+      value: -4.9737985e-14
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 3b1a24b58c372584a9e4b671f5f25345,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -9.52324e-14
+      value: -0.00000029802322
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 3b1a24b58c372584a9e4b671f5f25345,
         type: 3}
@@ -11393,7 +11393,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 3b1a24b58c372584a9e4b671f5f25345,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 179.99998
+      value: 360
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 3b1a24b58c372584a9e4b671f5f25345,
         type: 3}
@@ -14319,7 +14319,7 @@ Light:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 2.05
   m_Range: 100
-  m_SpotAngle: 151.7862
+  m_SpotAngle: 52.4
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
@@ -16605,7 +16605,7 @@ Light:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 2.05
   m_Range: 100
-  m_SpotAngle: 151.7862
+  m_SpotAngle: 52.4
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
