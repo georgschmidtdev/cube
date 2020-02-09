@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 232723902}
   - component: {fileID: 232723901}
   - component: {fileID: 232723900}
+  - component: {fileID: 232723903}
   m_Layer: 5
   m_Name: PowerupTutorial2
   m_TagString: Untagged
@@ -146,9 +147,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 232723898}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0.025616935, y: -0.7073658, z: 0.025669519, w: 0.70591676}
   m_LocalPosition: {x: 0, y: 0, z: -0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: -0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 399746449}
   m_RootOrder: 10
@@ -216,6 +217,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 232723898}
   m_CullTransparentMesh: 0
+--- !u!1183024399 &232723903
+LookAtConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 232723898}
+  m_Enabled: 1
+  m_Weight: 1
+  m_RotationAtRest: {x: 0, y: 0, z: 0}
+  m_RotationOffset: {x: 0, y: 0, z: 0}
+  m_Roll: 0
+  m_WorldUpObject: {fileID: 0}
+  m_UseUpObject: 0
+  m_IsContraintActive: 1
+  m_IsLocked: 1
+  m_Sources:
+  - sourceTransform: {fileID: 1689475322}
+    weight: 1
 --- !u!1 &342601973
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,6 +248,7 @@ GameObject:
   - component: {fileID: 342601977}
   - component: {fileID: 342601976}
   - component: {fileID: 342601975}
+  - component: {fileID: 342601978}
   m_Layer: 5
   m_Name: ToMainMenu
   m_TagString: Untagged
@@ -242,9 +263,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 342601973}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0.021611622, y: -0.7045724, z: 0.021477332, w: 0.7089778}
   m_LocalPosition: {x: 0, y: 0, z: -2.31}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: -0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 399746449}
   m_RootOrder: 15
@@ -311,6 +332,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 342601973}
   m_CullTransparentMesh: 0
+--- !u!1183024399 &342601978
+LookAtConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 342601973}
+  m_Enabled: 1
+  m_Weight: 1
+  m_RotationAtRest: {x: 0, y: 0, z: 0}
+  m_RotationOffset: {x: 0, y: 0, z: 0}
+  m_Roll: 0
+  m_WorldUpObject: {fileID: 0}
+  m_UseUpObject: 0
+  m_IsContraintActive: 1
+  m_IsLocked: 1
+  m_Sources:
+  - sourceTransform: {fileID: 1689475322}
+    weight: 1
 --- !u!1001 &393899429
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -521,6 +561,7 @@ GameObject:
   - component: {fileID: 462687270}
   - component: {fileID: 462687269}
   - component: {fileID: 462687268}
+  - component: {fileID: 462687271}
   m_Layer: 5
   m_Name: TutorialEnd
   m_TagString: Untagged
@@ -535,9 +576,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 462687266}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0.022665659, y: -0.70738333, z: 0.022706801, w: 0.70610166}
   m_LocalPosition: {x: 0, y: 0, z: -0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: -0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 399746449}
   m_RootOrder: 11
@@ -604,6 +645,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 462687266}
   m_CullTransparentMesh: 0
+--- !u!1183024399 &462687271
+LookAtConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 462687266}
+  m_Enabled: 1
+  m_Weight: 1
+  m_RotationAtRest: {x: 0, y: 0, z: 0}
+  m_RotationOffset: {x: 0, y: 0, z: 0}
+  m_Roll: 0
+  m_WorldUpObject: {fileID: 0}
+  m_UseUpObject: 0
+  m_IsContraintActive: 1
+  m_IsLocked: 1
+  m_Sources:
+  - sourceTransform: {fileID: 1689475322}
+    weight: 1
 --- !u!1 &548399965 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6773324222741347719, guid: ce133574716fe4b489f68832aa7301eb,
@@ -741,6 +801,7 @@ GameObject:
   - component: {fileID: 649937350}
   - component: {fileID: 649937349}
   - component: {fileID: 649937348}
+  - component: {fileID: 649937351}
   m_Layer: 5
   m_Name: RestartTutorial3
   m_TagString: Untagged
@@ -755,9 +816,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 649937346}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0.011680063, y: -0.70766973, z: 0.0117018875, w: 0.7063499}
   m_LocalPosition: {x: 0, y: 0, z: -0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: -0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 399746449}
   m_RootOrder: 12
@@ -827,6 +888,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 649937346}
   m_CullTransparentMesh: 0
+--- !u!1183024399 &649937351
+LookAtConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 649937346}
+  m_Enabled: 1
+  m_Weight: 1
+  m_RotationAtRest: {x: 0, y: 0, z: 0}
+  m_RotationOffset: {x: 0, y: 0, z: 0}
+  m_Roll: 0
+  m_WorldUpObject: {fileID: 0}
+  m_UseUpObject: 0
+  m_IsContraintActive: 1
+  m_IsLocked: 1
+  m_Sources:
+  - sourceTransform: {fileID: 1689475322}
+    weight: 1
 --- !u!1 &762567122
 GameObject:
   m_ObjectHideFlags: 0
@@ -839,6 +919,7 @@ GameObject:
   - component: {fileID: 762567125}
   - component: {fileID: 762567124}
   - component: {fileID: 762567126}
+  - component: {fileID: 762567127}
   m_Layer: 5
   m_Name: WalkTutorial
   m_TagString: Untagged
@@ -853,9 +934,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 762567122}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0.0626427, y: -0.7358404, z: 0.068722665, w: 0.6707399}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: -0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 399746449}
   m_RootOrder: 0
@@ -922,6 +1003,25 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 0.2, y: -0.2}
   m_UseGraphicAlpha: 1
+--- !u!1183024399 &762567127
+LookAtConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 762567122}
+  m_Enabled: 1
+  m_Weight: 1
+  m_RotationAtRest: {x: 0, y: 0, z: 0}
+  m_RotationOffset: {x: 0, y: 0, z: 0}
+  m_Roll: 0
+  m_WorldUpObject: {fileID: 0}
+  m_UseUpObject: 0
+  m_IsContraintActive: 1
+  m_IsLocked: 1
+  m_Sources:
+  - sourceTransform: {fileID: 1689475322}
+    weight: 1
 --- !u!1 &792888644
 GameObject:
   m_ObjectHideFlags: 0
@@ -1051,6 +1151,7 @@ GameObject:
   - component: {fileID: 819044651}
   - component: {fileID: 819044650}
   - component: {fileID: 819044649}
+  - component: {fileID: 819044652}
   m_Layer: 5
   m_Name: JumpTutorial
   m_TagString: Untagged
@@ -1065,9 +1166,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 819044647}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0.005386532, y: -0.70973176, z: 0.0054270676, w: 0.7044306}
   m_LocalPosition: {x: 0, y: 0, z: -0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: -0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 399746449}
   m_RootOrder: 1
@@ -1136,6 +1237,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 819044647}
   m_CullTransparentMesh: 0
+--- !u!1183024399 &819044652
+LookAtConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 819044647}
+  m_Enabled: 1
+  m_Weight: 1
+  m_RotationAtRest: {x: 0, y: 0, z: 0}
+  m_RotationOffset: {x: 0, y: 0, z: 0}
+  m_Roll: 0
+  m_WorldUpObject: {fileID: 0}
+  m_UseUpObject: 0
+  m_IsContraintActive: 1
+  m_IsLocked: 1
+  m_Sources:
+  - sourceTransform: {fileID: 1689475322}
+    weight: 1
 --- !u!1 &834160085 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: b86bf6c347664944094b80dfcf1fb572,
@@ -1597,6 +1717,7 @@ GameObject:
   - component: {fileID: 1098378791}
   - component: {fileID: 1098378790}
   - component: {fileID: 1098378789}
+  - component: {fileID: 1098378792}
   m_Layer: 5
   m_Name: JumppadTutorial
   m_TagString: Untagged
@@ -1611,9 +1732,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1098378787}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0.0027517225, y: -0.7084516, z: 0.0027622615, w: 0.7057486}
   m_LocalPosition: {x: 0, y: 0, z: -0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: -0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 399746449}
   m_RootOrder: 6
@@ -1680,6 +1801,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1098378787}
   m_CullTransparentMesh: 0
+--- !u!1183024399 &1098378792
+LookAtConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1098378787}
+  m_Enabled: 1
+  m_Weight: 1
+  m_RotationAtRest: {x: 0, y: 0, z: 0}
+  m_RotationOffset: {x: 0, y: 0, z: 0}
+  m_Roll: 0
+  m_WorldUpObject: {fileID: 0}
+  m_UseUpObject: 0
+  m_IsContraintActive: 1
+  m_IsLocked: 1
+  m_Sources:
+  - sourceTransform: {fileID: 1689475322}
+    weight: 1
 --- !u!1 &1120109565
 GameObject:
   m_ObjectHideFlags: 0
@@ -1819,6 +1959,7 @@ GameObject:
   - component: {fileID: 1129792864}
   - component: {fileID: 1129792863}
   - component: {fileID: 1129792862}
+  - component: {fileID: 1129792865}
   m_Layer: 5
   m_Name: ToGame
   m_TagString: Untagged
@@ -1833,9 +1974,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1129792860}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0.021435706, y: -0.71031094, z: 0.021651596, w: 0.70322835}
   m_LocalPosition: {x: 0, y: 0, z: 2.41}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: -0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 399746449}
   m_RootOrder: 14
@@ -1902,6 +2043,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1129792860}
   m_CullTransparentMesh: 0
+--- !u!1183024399 &1129792865
+LookAtConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1129792860}
+  m_Enabled: 1
+  m_Weight: 1
+  m_RotationAtRest: {x: 0, y: 0, z: 0}
+  m_RotationOffset: {x: 0, y: 0, z: 0}
+  m_Roll: 0
+  m_WorldUpObject: {fileID: 0}
+  m_UseUpObject: 0
+  m_IsContraintActive: 1
+  m_IsLocked: 1
+  m_Sources:
+  - sourceTransform: {fileID: 1689475322}
+    weight: 1
 --- !u!1 &1229272320
 GameObject:
   m_ObjectHideFlags: 0
@@ -1914,6 +2074,7 @@ GameObject:
   - component: {fileID: 1229272324}
   - component: {fileID: 1229272323}
   - component: {fileID: 1229272322}
+  - component: {fileID: 1229272325}
   m_Layer: 5
   m_Name: RestartTutorial1
   m_TagString: Untagged
@@ -1928,9 +2089,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1229272320}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: -0.020244695, y: -0.70896024, z: -0.020368138, w: 0.7046636}
   m_LocalPosition: {x: 0, y: 0, z: -0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: -0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 399746449}
   m_RootOrder: 2
@@ -1999,6 +2160,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1229272320}
   m_CullTransparentMesh: 0
+--- !u!1183024399 &1229272325
+LookAtConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1229272320}
+  m_Enabled: 1
+  m_Weight: 1
+  m_RotationAtRest: {x: 0, y: 0, z: 0}
+  m_RotationOffset: {x: 0, y: 0, z: 0}
+  m_Roll: 0
+  m_WorldUpObject: {fileID: 0}
+  m_UseUpObject: 0
+  m_IsContraintActive: 1
+  m_IsLocked: 1
+  m_Sources:
+  - sourceTransform: {fileID: 1689475322}
+    weight: 1
 --- !u!1001 &1358872394
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2451,6 +2631,7 @@ GameObject:
   - component: {fileID: 1651221355}
   - component: {fileID: 1651221354}
   - component: {fileID: 1651221353}
+  - component: {fileID: 1651221356}
   m_Layer: 5
   m_Name: RestartTutorial2
   m_TagString: Untagged
@@ -2465,9 +2646,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1651221351}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: -0.015356418, y: -0.70856524, z: -0.015427303, w: 0.7053095}
   m_LocalPosition: {x: 0, y: 0, z: -0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: -0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 399746449}
   m_RootOrder: 3
@@ -2536,6 +2717,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1651221351}
   m_CullTransparentMesh: 0
+--- !u!1183024399 &1651221356
+LookAtConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1651221351}
+  m_Enabled: 1
+  m_Weight: 1
+  m_RotationAtRest: {x: 0, y: 0, z: 0}
+  m_RotationOffset: {x: 0, y: 0, z: 0}
+  m_Roll: 0
+  m_WorldUpObject: {fileID: 0}
+  m_UseUpObject: 0
+  m_IsContraintActive: 1
+  m_IsLocked: 1
+  m_Sources:
+  - sourceTransform: {fileID: 1689475322}
+    weight: 1
 --- !u!1 &1652702368
 GameObject:
   m_ObjectHideFlags: 0
@@ -2548,6 +2748,7 @@ GameObject:
   - component: {fileID: 1652702372}
   - component: {fileID: 1652702371}
   - component: {fileID: 1652702370}
+  - component: {fileID: 1652702373}
   m_Layer: 5
   m_Name: BHOPTutorial2
   m_TagString: Untagged
@@ -2562,9 +2763,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1652702368}
-  m_LocalRotation: {x: -0, y: 0.9914448, z: -0, w: 0.13052638}
+  m_LocalRotation: {x: 0.0037907, y: -0.69676304, z: 0.0036822618, w: 0.7172819}
   m_LocalPosition: {x: 0, y: 0, z: -3.3}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: -0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 399746449}
   m_RootOrder: 5
@@ -2632,6 +2833,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1652702368}
   m_CullTransparentMesh: 0
+--- !u!1183024399 &1652702373
+LookAtConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1652702368}
+  m_Enabled: 1
+  m_Weight: 1
+  m_RotationAtRest: {x: 0, y: 0, z: 0}
+  m_RotationOffset: {x: 0, y: 0, z: 0}
+  m_Roll: 0
+  m_WorldUpObject: {fileID: 0}
+  m_UseUpObject: 0
+  m_IsContraintActive: 1
+  m_IsLocked: 1
+  m_Sources:
+  - sourceTransform: {fileID: 1689475322}
+    weight: 1
 --- !u!1 &1674241159
 GameObject:
   m_ObjectHideFlags: 0
@@ -2771,6 +2991,7 @@ GameObject:
   - component: {fileID: 1686390052}
   - component: {fileID: 1686390051}
   - component: {fileID: 1686390050}
+  - component: {fileID: 1686390053}
   m_Layer: 5
   m_Name: PowerupTutorial1
   m_TagString: Untagged
@@ -2785,9 +3006,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1686390048}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0.027484074, y: -0.7073483, z: 0.027544623, w: 0.7057934}
   m_LocalPosition: {x: 0, y: 0, z: -0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: -0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 399746449}
   m_RootOrder: 9
@@ -2854,6 +3075,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1686390048}
   m_CullTransparentMesh: 0
+--- !u!1183024399 &1686390053
+LookAtConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1686390048}
+  m_Enabled: 1
+  m_Weight: 1
+  m_RotationAtRest: {x: 0, y: 0, z: 0}
+  m_RotationOffset: {x: 0, y: 0, z: 0}
+  m_Roll: 0
+  m_WorldUpObject: {fileID: 0}
+  m_UseUpObject: 0
+  m_IsContraintActive: 1
+  m_IsLocked: 1
+  m_Sources:
+  - sourceTransform: {fileID: 1689475322}
+    weight: 1
 --- !u!1 &1689475319
 GameObject:
   m_ObjectHideFlags: 0
@@ -3121,6 +3361,7 @@ GameObject:
   - component: {fileID: 1699453833}
   - component: {fileID: 1699453832}
   - component: {fileID: 1699453831}
+  - component: {fileID: 1699453834}
   m_Layer: 5
   m_Name: BoostpadTutorial2
   m_TagString: Untagged
@@ -3135,9 +3376,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1699453829}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0.029863862, y: -0.7073189, z: 0.029935395, w: 0.70562875}
   m_LocalPosition: {x: 0, y: 0, z: -0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: -0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 399746449}
   m_RootOrder: 8
@@ -3204,6 +3445,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1699453829}
   m_CullTransparentMesh: 0
+--- !u!1183024399 &1699453834
+LookAtConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1699453829}
+  m_Enabled: 1
+  m_Weight: 1
+  m_RotationAtRest: {x: 0, y: 0, z: 0}
+  m_RotationOffset: {x: 0, y: 0, z: 0}
+  m_Roll: 0
+  m_WorldUpObject: {fileID: 0}
+  m_UseUpObject: 0
+  m_IsContraintActive: 1
+  m_IsLocked: 1
+  m_Sources:
+  - sourceTransform: {fileID: 1689475322}
+    weight: 1
 --- !u!1 &1719809499
 GameObject:
   m_ObjectHideFlags: 0
@@ -3216,6 +3476,7 @@ GameObject:
   - component: {fileID: 1719809503}
   - component: {fileID: 1719809502}
   - component: {fileID: 1719809501}
+  - component: {fileID: 1719809504}
   m_Layer: 5
   m_Name: BoostpadTutorial
   m_TagString: Untagged
@@ -3230,9 +3491,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1719809499}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0.040501144, y: -0.7070896, z: 0.04063313, w: 0.7047928}
   m_LocalPosition: {x: 0, y: 0, z: -0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: -0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 399746449}
   m_RootOrder: 7
@@ -3299,6 +3560,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1719809499}
   m_CullTransparentMesh: 0
+--- !u!1183024399 &1719809504
+LookAtConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719809499}
+  m_Enabled: 1
+  m_Weight: 1
+  m_RotationAtRest: {x: 0, y: 0, z: 0}
+  m_RotationOffset: {x: 0, y: 0, z: 0}
+  m_Roll: 0
+  m_WorldUpObject: {fileID: 0}
+  m_UseUpObject: 0
+  m_IsContraintActive: 1
+  m_IsLocked: 1
+  m_Sources:
+  - sourceTransform: {fileID: 1689475322}
+    weight: 1
 --- !u!1 &1740495183 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: e70cf859a4efd9c469cc284655cfb774,
@@ -3447,6 +3727,7 @@ GameObject:
   - component: {fileID: 1955674906}
   - component: {fileID: 1955674905}
   - component: {fileID: 1955674904}
+  - component: {fileID: 1955674907}
   m_Layer: 5
   m_Name: BHOPTutorial1
   m_TagString: Untagged
@@ -3461,9 +3742,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1955674902}
-  m_LocalRotation: {x: -0, y: 0.13052647, z: -0, w: 0.9914448}
+  m_LocalRotation: {x: 0.0036597496, y: -0.7209472, z: 0.0038075047, w: 0.69297}
   m_LocalPosition: {x: 0, y: 0, z: 3.32}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: -0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 399746449}
   m_RootOrder: 4
@@ -3534,6 +3815,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1955674902}
   m_CullTransparentMesh: 0
+--- !u!1183024399 &1955674907
+LookAtConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955674902}
+  m_Enabled: 1
+  m_Weight: 1
+  m_RotationAtRest: {x: 0, y: 0, z: 0}
+  m_RotationOffset: {x: 0, y: 0, z: 0}
+  m_Roll: 0
+  m_WorldUpObject: {fileID: 0}
+  m_UseUpObject: 0
+  m_IsContraintActive: 1
+  m_IsLocked: 1
+  m_Sources:
+  - sourceTransform: {fileID: 1689475322}
+    weight: 1
 --- !u!1 &1962466781
 GameObject:
   m_ObjectHideFlags: 0
@@ -3907,6 +4207,7 @@ GameObject:
   - component: {fileID: 2124292538}
   - component: {fileID: 2124292537}
   - component: {fileID: 2124292536}
+  - component: {fileID: 2124292539}
   m_Layer: 5
   m_Name: CrouchTutorial
   m_TagString: Untagged
@@ -3921,9 +4222,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2124292534}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0.014002628, y: -0.7138667, z: 0.014280098, w: 0.69999593}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: -0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 399746449}
   m_RootOrder: 13
@@ -3990,3 +4291,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2124292534}
   m_CullTransparentMesh: 0
+--- !u!1183024399 &2124292539
+LookAtConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2124292534}
+  m_Enabled: 1
+  m_Weight: 1
+  m_RotationAtRest: {x: 0, y: 0, z: 0}
+  m_RotationOffset: {x: 0, y: 0, z: 0}
+  m_Roll: 0
+  m_WorldUpObject: {fileID: 0}
+  m_UseUpObject: 0
+  m_IsContraintActive: 1
+  m_IsLocked: 1
+  m_Sources:
+  - sourceTransform: {fileID: 1689475322}
+    weight: 1
