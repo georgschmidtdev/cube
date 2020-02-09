@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class killCollectibles : MonoBehaviour
 {
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void OnTriggerEnter (Collider other)
@@ -21,7 +22,8 @@ public class killCollectibles : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             Debug.Log("kill collectible");
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }
