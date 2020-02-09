@@ -3,7 +3,27 @@ guid: 3b1a24b58c372584a9e4b671f5f25345
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_cloth
+    second: {fileID: 2100000, guid: 454a824e3349ff94a872d5fc8fb58566, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_main
+    second: {fileID: 2100000, guid: b6c64676987e6b4438f58f29d6c8d6dd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_panel_detail
+    second: {fileID: 2100000, guid: 9fcc6c51f802d2044b181573babf0eda, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_panel_main
+    second: {fileID: 2100000, guid: bd682428ded60f04b8294af9e0b4382a, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
