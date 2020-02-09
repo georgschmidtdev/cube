@@ -12547,8 +12547,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: ddd7809009f14be489e190437d47da86, type: 2}
-<<<<<<< HEAD
-<<<<<<< HEAD
     - target: {fileID: 5300225647358154366, guid: 2a9ec0f8b0ae1204695ee937839511b0,
         type: 3}
       propertyPath: m_RootOrder
@@ -12569,10 +12567,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 56bc211cec513e1429b4784d6be825da, type: 2}
-=======
->>>>>>> parent of 7f156fe... model texturing
-=======
->>>>>>> parent of 7f156fe... model texturing
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a9ec0f8b0ae1204695ee937839511b0, type: 3}
 --- !u!1 &1574211415 stripped
