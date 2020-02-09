@@ -640,6 +640,35 @@ public class CPMPlayer : MonoBehaviour
             isdead = true;
         }
 
+        if (other.gameObject.CompareTag("lvl1"))
+        {
+            startPosition = new Vector3(-38.73f, 1.66f, -38.94f);
+        }
+
+        if (other.gameObject.CompareTag("lvl2"))
+        {
+            startPosition = new Vector3(44.17f, 46.97f, 36.44f);
+        }
+
+        if (other.gameObject.CompareTag("lvl3"))
+        {
+            startPosition = new Vector3(117.5f, 109.756f, -0.58f);
+        }
+
+        if (other.gameObject.CompareTag("lvl4"))
+        {
+            startPosition = new Vector3(108.01f, 181.99f, 7.45f);
+        }
+
+        if (other.gameObject.CompareTag("lvl5"))
+        {
+            startPosition = new Vector3(109.49f, 239.38f, -1.14f);
+        }
+
+        if (other.gameObject.CompareTag("lvl6"))
+        {
+            startPosition = new Vector3(84.36f, 269.91f, -0.71f);
+        }
 
     }
 
