@@ -126,7 +126,6 @@ public class Timer : MonoBehaviour
             
         }
 
-        highscoreList.text = listString;
         PlayerPrefs.SetString("Highscores", listString);
     }
 }
