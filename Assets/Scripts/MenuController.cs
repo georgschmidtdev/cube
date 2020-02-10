@@ -12,6 +12,13 @@ public class MenuController : MonoBehaviour
     public GameObject objectToMove;
     public float animationDuration;
 
+
+    void Start()
+    {
+        Time.timeScale = 1;
+    }
+
+
     public void onClicked(Button button){
 
         if(button.tag == "rotateRight"){

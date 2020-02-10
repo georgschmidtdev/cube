@@ -27,10 +27,14 @@ public class SceneLoader : MonoBehaviour
 
     public void onClicked(Button button){
 
+        Debug.Log("clicked");
+
         for (int i = 0; i < sceneSelectors.Length; i++)
         {
+            Debug.Log("clicked 2");
             if(button.tag == sceneSelectors[i]){
                 print(scenes[i]);
+                Debug.Log("clicked 3");
                 SceneManager.LoadScene(scenes[i], LoadSceneMode.Single);
             }
         }
