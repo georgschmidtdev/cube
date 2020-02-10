@@ -16,6 +16,8 @@ public class MenuController : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1;
+        Cursor.visible = true;
+        Screen.lockCursor = false;
     }
 
 
