@@ -18,6 +18,12 @@ public class Timer : MonoBehaviour
     bool start;
 
     [SerializeField] Text stopWatchText;
+    [SerializeField] Text GyroTimer1;
+    [SerializeField] Text GyroTimer2;
+    [SerializeField] Text GyroTimer3;
+    [SerializeField] Text GyroTimer4;
+    [SerializeField] Text GyroTimer5;
+    [SerializeField] Text GyroTimer6;
     [SerializeField] Text highscoreList;
 
     public struct HighscoreEntry{
@@ -52,10 +58,17 @@ public class Timer : MonoBehaviour
             miliseconds = (int)((timer * 100) % 100);
             seconds = (int)(timer % 60);
             minutes = (int)(timer / 60);
-          
-            stopWatchText.text = minutes.ToString("00") + ":" + seconds.ToString("00") + ":" + miliseconds.ToString("00");
 
+            stopWatchText.text = minutes.ToString("00") + ":" + seconds.ToString("00") + ":" + miliseconds.ToString("00");
+            
             PlayerPrefs.SetString("currentTime", stopWatchText.text);
+
+            GyroTimer1.text = PlayerPrefs.GetString("currentTime");
+            GyroTimer2.text = PlayerPrefs.GetString("currentTime");
+            GyroTimer3.text = PlayerPrefs.GetString("currentTime");
+            GyroTimer4.text = PlayerPrefs.GetString("currentTime");
+            GyroTimer5.text = PlayerPrefs.GetString("currentTime");
+            GyroTimer6.text = PlayerPrefs.GetString("currentTime");
         }
     }
 
