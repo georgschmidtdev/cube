@@ -41,6 +41,11 @@ public class MenuController : MonoBehaviour
             StartCoroutine(RotateMenuCube(objectToMove, new Vector3(-90, 0, 0), animationDuration));
             StartCoroutine(MoveMenuCube(objectToMove, new Vector3(0, 0, 5), animationDuration / 2));
         }
+        else if (button.tag == "QuitGame")
+        {
+            Debug.Log("quiten");
+            Application.Quit();
+        }
     }
 
     IEnumerator RotateMenuCube(GameObject gameObjectToMove, Vector3 eulerAngle, float duration){
