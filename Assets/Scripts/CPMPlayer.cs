@@ -197,6 +197,7 @@ public class CPMPlayer : MonoBehaviour
             Jumpsound.Play();
         }
 
+
         // Do FPS calculation
         frameCount++;
         dt += Time.deltaTime;
@@ -515,6 +516,11 @@ public class CPMPlayer : MonoBehaviour
     // Pad Acceleration
     void OnTriggerEnter(Collider other)
     {
+        if (other.tag == "life")
+        {
+            AudioSource audio = gameObject.GetComponent<AudioSource>();
+            audio.Play();
+        }
 
         // MOVEMENT VECTOR
 
@@ -741,4 +747,5 @@ private void ApplyFriction(float t)
         Debug.Log("DeathScreen");
     }
 
-}
+   
+    }
